@@ -227,7 +227,9 @@ h4 {
 }
 
 .background.c1 {
-  background-image: url('../images/card-bora-beach.png');
+  background-image: url('../images/card-bora-beach_1.png');
+  background-image: -webkit-image-set(url('../images/card-bora-beach_1-p-500.png') 1x, url('../images/card-bora-beach_1-p-800.png') 2x);
+  background-image: image-set(url('../images/card-bora-beach_1-p-500.png') 1x, url('../images/card-bora-beach_1-p-800.png') 2x);
 }
 
 .background.c2 {
@@ -1470,7 +1472,9 @@ h4 {
 }
 
 .project-image-cover {
-  background-image: url('../images/card-bora-beach.png');
+  background-image: url('../images/card-bora-beach_1.png');
+  background-image: -webkit-image-set(url('../images/card-bora-beach_1-p-500.png') 1x, url('../images/card-bora-beach_1-p-800.png') 2x);
+  background-image: image-set(url('../images/card-bora-beach_1-p-500.png') 1x, url('../images/card-bora-beach_1-p-800.png') 2x);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1501,7 +1505,7 @@ h4 {
 }
 
 .project-image-cover.c1 {
-  background-image: url('../images/card-bora-beach-inner.png');
+  background-image: url('../images/card-bora-beach.png');
 }
 
 .project-image-cover.c2 {
