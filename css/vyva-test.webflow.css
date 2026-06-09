@@ -3238,13 +3238,16 @@ h4 {
 
   .hero-section {
     min-height: 93vh;
+    overflow-x: hidden;
   }
 
   .hero-content {
     grid-template-columns: 1fr .65fr;
     margin-top: 0;
-    padding-top: 160px;
-    padding-right: 0;
+    padding-top: 120px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
   }
 
   .hero-content.dark {
@@ -3294,6 +3297,23 @@ h4 {
   .circle-link-text {
     grid-auto-flow: column;
     padding-right: 35px;
+  }
+
+  /* Hero logo adjustments for small screens */
+  .section-4 .image {
+    max-width: 70%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+
+  /* Ensure background video does not cause horizontal overflow on tiny screens */
+  .hero-section.w-background-video > video {
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
   }
 
   .circle-link-text.left {
