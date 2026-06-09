@@ -65,7 +65,50 @@
     </div>
   </div>
   <section class="section-4">
-    <section class="div-block"><img src="images/Vyva-logo3.svg" loading="lazy" alt="" class="image"></section>
+    <div class="div-block" style="color: white; font-family: Montserrat, sans-serif; font-size: 3.9rem; font-weight: medium; line-height: 1.4; text-align: center; z-index: 2; position: relative; display: flex; align-items: center; justify-content: center; white-space: nowrap; width: 100%; max-width: 605px; min-height: 165px; overflow: visible;">
+      <span>Uma Experiência&nbsp;</span>
+      <span id="typewriter" style="border-right: 3px solid white; padding-right: 5px; animation: blink-caret 0.75s step-end infinite;"></span>
+    </div>
+    <style>
+      @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: white; } }
+      @media (max-width: 991px) { .div-block { white-space: normal !important; flex-direction: column; gap: 15px; align-items: center !important; } }
+      @media (max-width: 768px) { .div-block { font-size: 2.6rem !important; max-width: 100% !important; min-height: auto !important; } }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const words = ["Inesquecível", "De Outro Mundo", "Apaixonante"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const el = document.getElementById("typewriter");
+        
+        function type() {
+          const currentWord = words[wordIndex];
+          if (isDeleting) {
+            el.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            el.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+          }
+          
+          let speed = isDeleting ? 50 : 100;
+          
+          if (!isDeleting && charIndex === currentWord.length) {
+            speed = 2000;
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            speed = 500;
+          }
+          
+          setTimeout(type, speed);
+        }
+        
+        type();
+      });
+    </script>
     <div data-poster-url="videos/background-3_poster.0000000.jpg" data-video-urls="videos/background-3_mp4.mp4,videos/background-3_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="hero-section w-background-video w-background-video-atom"><video id="4dc971ed-58ef-d3cb-1fc1-154aaeb4611b-video" autoplay="" loop="" style="background-image:url(&quot;videos/background-3_poster.0000000.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
         <source src="videos/background-3_mp4.mp4" data-wf-ignore="true">
         <source src="videos/background-3_webm.webm" data-wf-ignore="true">
