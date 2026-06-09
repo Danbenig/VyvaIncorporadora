@@ -475,6 +475,15 @@ h4 {
   position: relative;
 }
 
+  /* Keep section-4 horizontal padding on mobile and prevent overflow */
+  .section-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 .section.bottom-border {
   border-bottom: 1px solid var(--dark-outline);
   background-image: linear-gradient(#f64603, #f64603);
@@ -2106,7 +2115,9 @@ h4 {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   height: 100vh;
   display: flex;
 }
