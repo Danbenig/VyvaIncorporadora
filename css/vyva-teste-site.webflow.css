@@ -100,7 +100,7 @@ img {
   min-height: 100vh;
   padding-top: 0;
   display: flex;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .grid-wrapper {
@@ -146,11 +146,12 @@ img {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
-  place-content: stretch;
+  place-content: stretch space-between;
+  align-items: center;
   width: 100%;
   display: grid;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .logo-side {
@@ -183,7 +184,7 @@ img {
   display: flex;
   position: absolute;
   inset: 0%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .background-image {
@@ -197,8 +198,9 @@ img {
 }
 
 .background-image.home-background {
-  background-image: url('../images/Image002.jpeg');
+  background-image: url('../images/Trumb-4.avif');
   background-position: 50%;
+  background-size: cover;
 }
 
 .background-image.testimonial-background {
@@ -210,7 +212,7 @@ img {
 }
 
 .background-image.action-background {
-  background-image: url('../images/BORA-BEACH-08.avif');
+  background-image: url('../images/Random-image-5.avif');
   background-position: 50%;
 }
 
@@ -235,7 +237,7 @@ img {
 
 .background-image.history-background {
   background-image: none;
-  margin-right: 60px;
+  margin-right: auto;
   overflow: visible;
 }
 
@@ -463,6 +465,16 @@ img {
   margin-bottom: 100px;
 }
 
+.section.no-padding.clip-2 {
+  border-style: solid none none;
+  margin-bottom: 0;
+}
+
+.section.no-padding.clip-3 {
+  border-style: none none solid;
+  margin-bottom: 100px;
+}
+
 .nav-center {
   flex-direction: column;
   justify-content: center;
@@ -584,7 +596,7 @@ img {
 }
 
 .looping-heading.mobile-only {
-  display: none;
+  display: block;
 }
 
 .looping-heading-wrapper {
@@ -607,7 +619,7 @@ img {
 }
 
 .heading-separator.mobile-only {
-  display: none;
+  display: block;
 }
 
 .looping-wrapper {
@@ -1213,24 +1225,27 @@ img {
 }
 
 .video-cover {
+  flex: 0 auto;
+  justify-content: flex-start;
   align-items: center;
-  width: 50vw;
+  width: 45vw;
+  min-height: 70vw;
   display: flex;
-  position: absolute;
-  inset: 0% auto 0% 0%;
+  position: relative;
+  inset: 0% 0% 0% auto;
   overflow: visible;
 }
 
 .about-intro {
-  grid-column-gap: 16px;
-  grid-row-gap: 199px;
+  grid-column-gap: 15px;
+  grid-row-gap: 200px;
   grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
   grid-auto-columns: 1fr;
-  max-width: 600px;
+  max-width: 500px;
   padding-top: 120px;
   padding-bottom: 120px;
-  padding-right: 60px;
+  padding-right: 0;
   display: grid;
 }
 
@@ -5694,6 +5709,404 @@ img {
   background-image: url('../images/Frame-1.avif');
 }
 
+.background-image-two {
+  filter: none;
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vip-Bailame.avif');
+  background-position: 0 0, 50%;
+  background-size: auto, cover;
+  margin-right: 0;
+  position: absolute;
+  inset: 0%;
+}
+
+.background-image-two.home-background {
+  background-image: url('../images/Image002.jpeg');
+  background-position: 50%;
+}
+
+.background-image-two.testimonial-background {
+  background-image: url('../images/Image005.jpeg');
+  background-position: 50% 0;
+  width: 110%;
+  height: 110%;
+  inset: auto;
+}
+
+.background-image-two.action-background {
+  background-image: url('../images/BORA-BEACH-08.avif');
+  background-position: 50%;
+}
+
+.background-image-two.services-one {
+  background-image: url('../images/Image018.jpeg');
+}
+
+.background-image-two.services-two {
+  background-image: url('../images/Image002.jpeg');
+  background-position: 0 0;
+}
+
+.background-image-two.services-three {
+  background-image: url('../images/Image005.jpeg');
+  background-position: 0%;
+}
+
+.background-image-two.projects-background {
+  background-image: url('../images/Image028.jpeg');
+  background-position: 50%;
+}
+
+.background-image-two.history-background {
+  background-image: none;
+  margin-right: 60px;
+  overflow: visible;
+}
+
+.background-image-two.phpgeneral {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/PHP-capa.avif');
+}
+
+.background-image-two.vipstrategy {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/vip.avif');
+}
+
+.background-image-two.borabeach {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-08.avif');
+}
+
+.background-image-two.about-v1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/brazilian-party04.avif');
+}
+
+.background-image-two.about-v3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-02.avif');
+}
+
+.background-image-two.about-p1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-01.avif');
+}
+
+.background-image-two.about-p2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-02.avif');
+}
+
+.background-image-two.about-p3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-03.avif');
+}
+
+.background-image-two.vyva-homes-capa {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/Vya-homes-01.png');
+}
+
+.background-image-two.about-vyva-homes-1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-02.avif');
+}
+
+.background-image-two.about-vyva-homes-2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-03.png');
+}
+
+.background-image-two.about-vyva-homes-3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-04.png');
+}
+
+.background-image-two.bora-beach-capa {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/BORA-BEACH-09.avif');
+}
+
+.background-image-two.about-bora-beach-1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-08.avif');
+}
+
+.background-image-two.about-bora-beach-2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/frente-1.avif');
+}
+
+.background-image-two.about-bora-beach-3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/bora-beach-restaurant.avif');
+}
+
+.background-image-two.history-background-two {
+  background-image: url('../images/Frame-1.avif');
+  background-position: 50%;
+  background-size: cover;
+  margin-right: 60px;
+  overflow: visible;
+}
+
+.about-intro-2 {
+  grid-column-gap: 16px;
+  grid-row-gap: 199px;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  max-width: 600px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-right: 60px;
+  display: grid;
+}
+
+.video-cover-footer {
+  align-items: center;
+  width: 50vw;
+  display: flex;
+  position: absolute;
+  inset: 0% auto 0% 0%;
+  overflow: visible;
+}
+
+.image-cover {
+  flex: 0 auto;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45vw;
+  display: flex;
+  position: absolute;
+  inset: 0% 0% 0% auto;
+  overflow: visible;
+}
+
+.about-intro-3 {
+  grid-column-gap: 15px;
+  grid-row-gap: 200px;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  max-width: 500px;
+  padding: 120px 0;
+  display: grid;
+}
+
+.background-image-2 {
+  filter: none;
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vip-Bailame.avif');
+  background-position: 0 0, 50%;
+  background-size: auto, cover;
+  margin-right: 0;
+  position: absolute;
+  inset: 0%;
+}
+
+.background-image-2.home-background {
+  background-image: url('../images/Image002.jpeg');
+  background-position: 50%;
+}
+
+.background-image-2.testimonial-background {
+  background-image: url('../images/Image005.jpeg');
+  background-position: 50% 0;
+  width: 110%;
+  height: 110%;
+  inset: auto;
+}
+
+.background-image-2.action-background {
+  background-image: url('../images/BORA-BEACH-08.avif');
+  background-position: 50%;
+}
+
+.background-image-2.services-one {
+  background-image: url('../images/Image018.jpeg');
+}
+
+.background-image-2.services-two {
+  background-image: url('../images/Image002.jpeg');
+  background-position: 0 0;
+}
+
+.background-image-2.services-three {
+  background-image: url('../images/Image005.jpeg');
+  background-position: 0%;
+}
+
+.background-image-2.projects-background {
+  background-image: url('../images/Image028.jpeg');
+  background-position: 50%;
+}
+
+.background-image-2.history-background {
+  background-image: none;
+  margin-right: auto;
+  overflow: visible;
+}
+
+.background-image-2.phpgeneral {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/PHP-capa.avif');
+}
+
+.background-image-2.vipstrategy {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/vip.avif');
+}
+
+.background-image-2.borabeach {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-08.avif');
+}
+
+.background-image-2.about-v1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/brazilian-party04.avif');
+}
+
+.background-image-2.about-v3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-02.avif');
+}
+
+.background-image-2.about-p1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-01.avif');
+}
+
+.background-image-2.about-p2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-02.avif');
+}
+
+.background-image-2.about-p3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/PHP-about-images-03.avif');
+}
+
+.background-image-2.vyva-homes-capa {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/Vya-homes-01.png');
+}
+
+.background-image-2.about-vyva-homes-1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-02.avif');
+}
+
+.background-image-2.about-vyva-homes-2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-03.png');
+}
+
+.background-image-2.about-vyva-homes-3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/Vyva-Homes-04.png');
+}
+
+.background-image-2.bora-beach-capa {
+  background-image: linear-gradient(#0000 36%, #000), url('../images/BORA-BEACH-09.avif');
+}
+
+.background-image-2.about-bora-beach-1 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/BORA-BEACH-08.avif');
+}
+
+.background-image-2.about-bora-beach-2 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/frente-1.avif');
+}
+
+.background-image-2.about-bora-beach-3 {
+  background-image: linear-gradient(#0000 41%, #000), url('../images/bora-beach-restaurant.avif');
+}
+
+.background-image-2.history-background-2 {
+  background-image: url('../images/Frame-1.avif');
+  background-position: 50%;
+  background-size: cover;
+  margin-right: auto;
+  overflow: visible;
+}
+
+.background-video-4 {
+  width: 100%;
+  height: 100%;
+  padding-right: 0;
+}
+
+.image-cover-2 {
+  flex: 0 auto;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45vw;
+  min-height: 70vw;
+  display: flex;
+  position: relative;
+  inset: 0% 0% 0% auto;
+  overflow: visible;
+}
+
+.content-grid-2 {
+  grid-column-gap: 23px;
+  grid-row-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  place-content: stretch space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-span-27 {
+  color: #ffffff9c;
+}
+
+.text-span-28 {
+  color: var(--orange);
+}
+
+.content-grid-nav {
+  grid-column-gap: 23px;
+  grid-row-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  place-content: stretch space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-flex {
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  place-content: stretch space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-flex-2 {
+  grid-column-gap: 23px;
+  grid-row-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  place-content: stretch space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper-flex {
+  z-index: 20;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border-bottom: 1px none var(--light-outline);
+  grid-template-rows: 1fr;
+  grid-template-columns: minmax(5vw, 1fr) minmax(auto, 1500px) minmax(5vw, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding-bottom: 0;
+  display: flex;
+  position: relative;
+}
+
 @media screen and (min-width: 1280px) {
   .sticky-image {
     width: 450px;
@@ -5749,6 +6162,12 @@ img {
 }
 
 @media screen and (min-width: 1440px) {
+  .background-image.history-background {
+    background-image: url('../images/Image002.jpeg'), linear-gradient(to bottom, null, null);
+    background-position: 0 0, 0 0;
+    background-size: auto, auto;
+  }
+
   .sticky-image {
     width: 475px;
     min-width: 475px;
@@ -5846,15 +6265,151 @@ img {
   .rotating-background-2.portrait-home {
     background-image: url('../images/image-4.avif');
   }
+
+  .background-image-two.history-background {
+    background-image: url('../images/Image002.jpeg'), linear-gradient(to bottom, null, null);
+    background-position: 0 0, 0 0;
+    background-size: auto, auto;
+  }
+
+  .background-image-two.history-background-two {
+    background-image: url('../images/Frame-1.avif');
+    background-position: 0 0;
+    background-size: auto;
+  }
+
+  .about-intro-2 {
+    padding-left: 60px;
+  }
+
+  .background-image-2.history-background, .background-image-2.history-background-2 {
+    background-image: url('../images/Image002.jpeg'), linear-gradient(to bottom, null, null);
+    background-position: 0 0, 0 0;
+    background-size: auto, auto;
+  }
 }
 
 @media screen and (min-width: 1920px) {
+  .content-grid {
+    grid-column-gap: 23px;
+    grid-row-gap: 16px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+  }
+
+  .background-image.history-background {
+    background-image: linear-gradient(#0000, #0000);
+    background-size: auto;
+    width: 45vw;
+    min-height: 50vw;
+    margin-right: 0;
+    position: relative;
+  }
+
+  .stacked-info {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .video-cover {
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    inset: 0% 0% 0% auto;
+    overflow: visible;
+  }
+
+  .about-intro {
+    max-width: 45vw;
+  }
+
   .project-image-2 {
     min-height: 120vh;
   }
 
   .hero-slide-inner-list {
     max-width: 60%;
+  }
+
+  .hero-section-3 {
+    margin-bottom: 0;
+  }
+
+  .background-video-3 {
+    width: 40vw;
+    height: auto;
+    min-height: 50vw;
+    padding-right: 0;
+  }
+
+  .image-cover {
+    justify-content: flex-start;
+    align-items: center;
+    width: 40vw;
+    inset: 0% auto 0% 0%;
+    overflow: visible;
+  }
+
+  .about-intro-3 {
+    clear: none;
+    grid-row-gap: 200px;
+    aspect-ratio: auto;
+    flex: 0 auto;
+    order: 0;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    align-self: auto;
+    max-width: 45vw;
+    padding-right: 60px;
+    overflow: visible;
+  }
+
+  .background-image-2.history-background {
+    margin-right: 0;
+  }
+
+  .background-image-2.history-background-2 {
+    margin-right: 38px;
+  }
+
+  .background-video-4 {
+    padding-right: 0;
+  }
+
+  .image-cover-2 {
+    z-index: 0;
+    text-overflow: clip;
+    overflow-wrap: normal;
+    order: 0;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40vw;
+    min-height: 50vw;
+    position: relative;
+    inset: 0% auto 0% 0%;
+    overflow: visible;
+  }
+
+  .content-grid-2, .content-grid-nav {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+
+  .content-flex, .content-flex-2 {
+    grid-column-gap: 23px;
+    grid-row-gap: 16px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
   }
 }
 
@@ -5876,8 +6431,18 @@ img {
   }
 
   .content-grid {
+    grid-column-gap: 50px;
     grid-row-gap: 0px;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .background-image.history-background {
+    background-image: linear-gradient(#0000, #0000);
+    background-position: 0 0;
+    background-size: auto;
+    flex: 1;
+    align-self: stretch;
+    margin-right: auto;
   }
 
   .nav-link {
@@ -5999,7 +6564,8 @@ img {
 
   .video-cover {
     justify-content: center;
-    width: auto;
+    align-items: center;
+    width: 45vw;
     min-height: 525px;
     margin-left: -5vw;
     margin-right: -5vw;
@@ -6008,6 +6574,9 @@ img {
 
   .about-intro {
     grid-row-gap: 36px;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    max-width: 350px;
     padding-top: 48px;
     padding-bottom: 120px;
   }
@@ -6514,6 +7083,69 @@ img {
     max-width: 350px;
     height: 35vw;
     max-height: 350px;
+  }
+
+  .about-intro-2 {
+    grid-row-gap: 36px;
+    padding-top: 48px;
+    padding-bottom: 120px;
+  }
+
+  .video-cover-footer {
+    justify-content: center;
+    width: auto;
+    min-height: 525px;
+    margin-left: -5vw;
+    margin-right: -5vw;
+    position: relative;
+  }
+
+  .image-cover {
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    min-height: 525px;
+    margin-left: -5vw;
+    margin-right: -5vw;
+    position: relative;
+  }
+
+  .about-intro-3 {
+    grid-row-gap: 36px;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    padding-top: 48px;
+    padding-bottom: 120px;
+  }
+
+  .background-image-2.history-background, .background-image-2.history-background-2 {
+    background-image: linear-gradient(#0000, #0000);
+    background-position: 0 0;
+    background-size: auto;
+    flex: 1;
+    align-self: stretch;
+    margin-right: auto;
+  }
+
+  .image-cover-2 {
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    min-height: 525px;
+    margin-left: -5vw;
+    margin-right: -5vw;
+    position: relative;
+  }
+
+  .content-grid-2, .content-grid-nav, .content-flex, .content-flex-2 {
+    grid-column-gap: 50px;
+    grid-row-gap: 0px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .wrapper-flex {
+    grid-row-gap: 48px;
   }
 }
 
@@ -7094,6 +7726,24 @@ img {
     margin-left: -5vw;
     margin-right: -5vw;
   }
+
+  .about-intro-2 {
+    padding-bottom: 100px;
+    padding-right: 0;
+  }
+
+  .video-cover-footer, .image-cover {
+    min-height: 375px;
+  }
+
+  .about-intro-3 {
+    padding-bottom: 100px;
+    padding-right: 0;
+  }
+
+  .image-cover-2 {
+    min-height: 375px;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -7109,8 +7759,27 @@ img {
     min-height: 93vh;
   }
 
+  .grid-wrapper {
+    border-bottom-style: none;
+  }
+
+  .content-grid {
+    flex-flow: column;
+  }
+
+  .background-image.action-background {
+    background-image: url('../images/BORA-BEACH-08.avif'), linear-gradient(to bottom, null, null);
+    background-size: cover, auto;
+    display: block;
+  }
+
   .background-image.services-one {
     z-index: 10;
+  }
+
+  .background-image.history-background {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .nav-link {
@@ -7124,6 +7793,10 @@ img {
   .section {
     padding-top: 90px;
     padding-bottom: 90px;
+  }
+
+  .section.no-padding.clip-3 {
+    border-top-style: solid;
   }
 
   .content-stacked {
@@ -7230,7 +7903,9 @@ img {
   }
 
   .video-cover {
-    min-height: 275px;
+    background-color: #0000;
+    width: 50vh;
+    display: block;
   }
 
   .about-intro {
@@ -7259,6 +7934,11 @@ img {
     height: 99vh;
     min-height: 99vh;
     overflow: auto;
+  }
+
+  .nav-cover-wrapper {
+    -webkit-backdrop-filter: brightness(40%) blur(15px);
+    backdrop-filter: brightness(40%) blur(15px);
   }
 
   .hero-top-content {
@@ -7421,6 +8101,10 @@ img {
     font-size: 32px;
   }
 
+  .subtitle-3.light {
+    text-align: center;
+  }
+
   .hero-intro-2 {
     grid-row-gap: 24px;
   }
@@ -7432,8 +8116,17 @@ img {
     padding-right: 12px;
   }
 
-  .hero-slide-title {
-    font-size: 46px;
+  .video-meta {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .hero-slide-title, .hero-slide-title.s1-text {
+    font-size: 40px;
+  }
+
+  .hero-section-3 {
+    margin-bottom: 0;
   }
 
   .hero-slide-inner-image {
@@ -7528,8 +8221,16 @@ img {
     font-size: 1.1em;
   }
 
+  .full-video {
+    display: none;
+  }
+
   .section-title-5 {
     padding-bottom: 60px;
+  }
+
+  .text-block-3, .text-block-4, .text-block-5, .text-block-6, .text-block-7, .text-block-8 {
+    display: none;
   }
 
   .box-image {
@@ -7546,6 +8247,88 @@ img {
 
   .box-image.large-image {
     grid-row-gap: 80px;
+  }
+
+  .background-image-two.services-one {
+    z-index: 10;
+  }
+
+  .background-image-two.history-background-two {
+    background-image: url('../images/Frame-1.avif');
+    background-position: 50%;
+    background-size: cover;
+    margin-right: 20px;
+  }
+
+  .about-intro-2 {
+    padding-bottom: 100px;
+  }
+
+  .video-cover-footer {
+    background-color: #0000;
+    min-height: 275px;
+    display: none;
+  }
+
+  .image-cover {
+    background-color: #0000;
+    width: 50vh;
+    display: block;
+  }
+
+  .about-intro-3 {
+    padding-bottom: 100px;
+  }
+
+  .background-image-2.action-background {
+    background-image: url('../images/BORA-BEACH-08.avif'), linear-gradient(to bottom, null, null);
+    background-size: cover, auto;
+    display: block;
+  }
+
+  .background-image-2.services-one {
+    z-index: 10;
+  }
+
+  .background-image-2.history-background {
+    margin-right: 20px;
+  }
+
+  .background-image-2.history-background-2 {
+    background-image: url('../images/Frame-1.avif'), linear-gradient(#0000, #0000);
+    background-position: 50%, 0 0;
+    background-size: cover, auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .image-cover-2 {
+    background-color: #0000;
+    width: 50vh;
+    display: block;
+  }
+
+  .content-grid-2 {
+    flex-flow: column;
+  }
+
+  .content-grid-nav {
+    flex-flow: row;
+  }
+
+  .content-flex {
+    flex-flow: column;
+    display: flex;
+  }
+
+  .content-flex-2 {
+    flex-flow: column;
+  }
+
+  .wrapper-flex {
+    border-bottom-style: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -7587,33 +8370,38 @@ img {
   justify-self: stretch;
 }
 
-#w-node-_9dcba389-8795-82dc-2eba-1f59cd1e3f68-5b88e616, #w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f26-5b88e616 {
+#w-node-_9dcba389-8795-82dc-2eba-1f59cd1e3f68-5b88e616, #w-node-_4c8835b5-c535-6f68-bf22-7179fa0fc5d1-5b88e616 {
   grid-area: 1 / 2 / 2 / 3;
 }
 
-#w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f28-5b88e616, #w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f2a-5b88e616 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
+#w-node-b86852c6-523f-e8bd-b9c2-4daf67a545a8-5b88e616 {
+  grid-area: 1 / 1 / 2 / 3;
 }
 
-#w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f3d-5b88e616 {
-  justify-self: start;
-}
-
-#w-node-bbacd791-3572-9d7a-75fd-d305d3b07e00-5b88e616 {
-  grid-area: 1 / 2 / 2 / 3;
-}
-
-#w-node-bbacd791-3572-9d7a-75fd-d305d3b07e01-5b88e616 {
+#w-node-_954a6693-c945-d06f-e836-a414255fb6c0-5b88e616 {
   grid-area: 1 / 3 / 2 / 5;
-}
-
-#w-node-bbacd791-3572-9d7a-75fd-d305d3b07e04-5b88e616 {
-  grid-area: span 1 / span 2 / span 1 / span 2;
   justify-self: start;
 }
 
-#w-node-bbacd791-3572-9d7a-75fd-d305d3b07e0e-5b88e616 {
+#w-node-_954a6693-c945-d06f-e836-a414255fb6cc-5b88e616 {
   justify-self: start;
+}
+
+#w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe51-5b88e616 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+#w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe5b-5b88e616 {
+  grid-area: 1 / 1 / 2 / 3;
+  justify-self: start;
+}
+
+#w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe67-5b88e616 {
+  justify-self: start;
+}
+
+#w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe52-5b88e616 {
+  grid-area: 1 / 3 / 2 / 5;
 }
 
 #w-node-_70d85785-c6e2-55e9-ba7f-315f5377581b-5b88e616 {
@@ -7655,17 +8443,23 @@ img {
   justify-self: start;
 }
 
-#w-node-a58f8dd6-b86d-6b4e-7995-e82fec12c3a9-5b88e616 {
+#w-node-ae522d2e-54fb-271d-7442-a58bc455474d-5b88e616 {
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: stretch;
+}
+
+#w-node-ae522d2e-54fb-271d-7442-a58bc455474e-5b88e616 {
+  grid-area: 1 / 4 / 2 / 5;
+  place-self: start end;
+}
+
+#w-node-ae522d2e-54fb-271d-7442-a58bc4554754-5b88e616 {
   grid-area: 1 / 2 / 2 / 3;
 }
 
-#w-node-a58f8dd6-b86d-6b4e-7995-e82fec12c3ab-5b88e616 {
-  grid-area: 1 / 1 / 2 / 5;
-  justify-self: stretch;
-}
-
-#w-node-_2f0a5e87-976c-f014-f7c8-00c3affee6b7-5b88e616 {
-  justify-self: center;
+#w-node-ae522d2e-54fb-271d-7442-a58bc4554756-5b88e616 {
+  grid-area: 1 / 2 / 2 / 4;
+  place-self: stretch stretch;
 }
 
 #w-node-_9c058113-eed2-954b-dc6a-7620aadd9bf6-aadd9bf4 {
@@ -7695,23 +8489,6 @@ img {
 
 #w-node-_4bd3291b-6885-0a71-6c7c-4070442730f4-aadd9bf4 {
   justify-self: end;
-}
-
-#w-node-f06e996d-a976-801f-4e3f-c42ff86db472-809021d6 {
-  grid-area: 1 / 2 / 2 / 3;
-}
-
-#w-node-f06e996d-a976-801f-4e3f-c42ff86db473-809021d6 {
-  grid-area: 1 / 3 / 2 / 5;
-}
-
-#w-node-f06e996d-a976-801f-4e3f-c42ff86db475-809021d6 {
-  grid-area: span 1 / span 2 / span 1 / span 2;
-  justify-self: start;
-}
-
-#w-node-f06e996d-a976-801f-4e3f-c42ff86db47f-809021d6 {
-  justify-self: start;
 }
 
 #w-node-_75f08d2b-b719-f1bd-fdcd-893de7f2c4aa-e7f2c4a8 {
@@ -7941,6 +8718,23 @@ img {
 
 #w-node-_8e1a8046-dbba-18f8-989e-8e7d18314db3-5b88e619 {
   place-self: center start;
+}
+
+#w-node-f06e996d-a976-801f-4e3f-c42ff86db472-809021d6 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+#w-node-f06e996d-a976-801f-4e3f-c42ff86db473-809021d6 {
+  grid-area: 1 / 3 / 2 / 5;
+}
+
+#w-node-f06e996d-a976-801f-4e3f-c42ff86db475-809021d6 {
+  grid-area: span 1 / span 2 / span 1 / span 2;
+  justify-self: start;
+}
+
+#w-node-f06e996d-a976-801f-4e3f-c42ff86db47f-809021d6 {
+  justify-self: start;
 }
 
 #w-node-a9d9a0a2-49f5-b288-b33c-3e19dcb20ab0-5b88e61a {
@@ -8658,6 +9452,24 @@ img {
 }
 
 @media screen and (min-width: 1920px) {
+  #w-node-b86852c6-523f-e8bd-b9c2-4daf67a545a8-5b88e616 {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #w-node-_954a6693-c945-d06f-e836-a414255fb6c0-5b88e616 {
+    grid-area: 1 / 3 / 2 / 5;
+    justify-self: auto;
+  }
+
+  #w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe5b-5b88e616 {
+    grid-area: 1 / 1 / 2 / 3;
+    justify-self: start;
+  }
+
+  #w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe52-5b88e616 {
+    grid-area: 1 / 3 / 2 / 5;
+  }
+
   #w-node-_8d7a045e-7b9a-b756-6a0a-89be20912a7b-20912a70 {
     justify-self: center;
   }
@@ -8679,28 +9491,16 @@ img {
     grid-column-end: 3;
   }
 
-  #w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f27-5b88e616 {
-    justify-self: center;
-  }
-
-  #w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f28-5b88e616 {
-    justify-self: start;
-  }
-
-  #w-node-_507de5a5-0a17-a1f6-3a93-224bb69f8f32-5b88e616 {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-
-  #w-node-bbacd791-3572-9d7a-75fd-d305d3b07e01-5b88e616 {
-    grid-column: 1 / 4;
-  }
-
-  #w-node-bbacd791-3572-9d7a-75fd-d305d3b07e04-5b88e616 {
+  #w-node-_6a7bc529-21c1-8637-d09a-a8a02be9fe5b-5b88e616 {
     grid-area: 2 / 1 / 3 / 4;
   }
 
-  #w-node-a58f8dd6-b86d-6b4e-7995-e82fec12c3ab-5b88e616 {
-    grid-column: 1 / 4;
+  #w-node-ae522d2e-54fb-271d-7442-a58bc455474e-5b88e616 {
+    grid-column: 3 / 4;
+  }
+
+  #w-node-ae522d2e-54fb-271d-7442-a58bc4554756-5b88e616 {
+    grid-column-end: 3;
   }
 
   #w-node-_18baa351-316d-8b19-95ac-7b1503a9f8ab-aadd9bf4, #w-node-bf58d955-b906-4f2f-a9e1-87078e92eeea-aadd9bf4 {
@@ -8710,14 +9510,6 @@ img {
   #w-node-_4bd3291b-6885-0a71-6c7c-4070442730f4-aadd9bf4 {
     order: -9999;
     justify-self: center;
-  }
-
-  #w-node-f06e996d-a976-801f-4e3f-c42ff86db473-809021d6 {
-    grid-column: 1 / 4;
-  }
-
-  #w-node-f06e996d-a976-801f-4e3f-c42ff86db475-809021d6 {
-    grid-area: 2 / 1 / 3 / 4;
   }
 
   #w-node-_75f08d2b-b719-f1bd-fdcd-893de7f2c4ab-e7f2c4a8 {
@@ -8772,8 +9564,12 @@ img {
     grid-area: span 1 / span 3 / span 1 / span 3;
   }
 
-  #w-node-_8e1a8046-dbba-18f8-989e-8e7d18314dad-5b88e619 {
+  #w-node-_8e1a8046-dbba-18f8-989e-8e7d18314dad-5b88e619, #w-node-f06e996d-a976-801f-4e3f-c42ff86db473-809021d6 {
     grid-column: 1 / 4;
+  }
+
+  #w-node-f06e996d-a976-801f-4e3f-c42ff86db475-809021d6 {
+    grid-area: 2 / 1 / 3 / 4;
   }
 
   #w-node-_92a9f52f-1089-9fe2-8c7b-9e34740404e5-5b88e61a {
@@ -9081,6 +9877,11 @@ img {
 
   #w-node-_9dcba389-8795-82dc-2eba-1f59cd1e3f00-5b88e616 {
     justify-self: start;
+  }
+
+  #w-node-ae522d2e-54fb-271d-7442-a58bc455474e-5b88e616 {
+    grid-column-start: 1;
+    justify-self: center;
   }
 
   #w-node-_8ad051f9-b990-40fe-b7a1-7eaf822f5006-5b88e619 {
