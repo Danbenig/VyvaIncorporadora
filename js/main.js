@@ -1,15 +1,16 @@
 /**
- * VYVA MASTER SCRIPTS — ANTI-SLOP ART DIRECTION
- * Preloader Choreography + Lenis Smooth Scroll + Seamless Loops +
- * Dynamic Scroll Reveals + Metric Counters + Dot Matrix Warp Canvas
+ * VYVA — Scripts principais do portal e das páginas do grupo
+ * Preloader, navegação, vídeos por viewport, carrosséis e fundo animado
  */
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchOrCoarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const isMobileViewport = () => window.matchMedia('(max-width: 768px)').matches;
 
-  // --- 1. PRELOADER & HERO ENTRY CHOREOGRAPHY ---
+  // --- 1. PRELOADER ---
   const preloader = document.getElementById('preloader');
   let pageRevealed = false;
 
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     revealPage();
   }
 
-  // --- 1.5. TYPEWRITER WORD ANIMATION (HERO & 3D CAROUSEL) ---
+  // --- 2. ANIMAÇÃO DE DIGITAÇÃO (HERO E GALERIA 3D) ---
   const typewriterTargets = document.querySelectorAll('#typewriter-content, .carousel-3d__typewriter, [data-phrases]');
   typewriterTargets.forEach((typewriterTarget) => {
     const rawPhrases = typewriterTarget.getAttribute('data-phrases');
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(stepTypewriter, 550);
   });
 
-  // --- 2. LENIS SMOOTH SCROLL ---
+  // --- 3. SCROLL SUAVE (LENIS) ---
   let lenis;
   if (typeof Lenis !== 'undefined' && !prefersReducedMotion) {
     lenis = new Lenis({
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 3. NAVBAR SCROLL EFFECT & MOBILE TOGGLE ---
+  // --- 4. CABEÇALHO E MENU PRINCIPAL ---
   const navbar = document.getElementById('mainNavbar');
   if (navbar) {
     const handleScroll = () => {
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 4. SEAMLESS TICKER LOOP NORMALIZER ---
+  // --- 5. FAIXA CONTÍNUA (TICKER) ---
   document.querySelectorAll('.ticker-strip__track').forEach((track) => {
     const children = Array.from(track.children);
     if (!children.length) return;
@@ -426,14 +427,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // --- 5. VIDEO LOOPS AUTOPLAY & VIEWPORT OBSERVER ---
-  const loopVideos = document.querySelectorAll('video[autoplay], video.loop-video');
+  // --- 6. CONTROLE DE VÍDEOS EM LOOP POR VIEWPORT ---
+  const loopVideos = Array.from(
+    document.querySelectorAll('video[autoplay], video[data-autoplay="true"], video.loop-video')
+  );
+  const videoInView = new WeakMap();
+
+  function canVideoPlay(video) {
+    if (document.hidden || !videoInView.get(video)) return false;
+    const ecoCard = video.closest('.eco-card');
+    if (ecoCard) {
+      const op = parseFloat(getComputedStyle(ecoCard).opacity);
+      if (!Number.isNaN(op) && op <= 0.05) return false;
+    }
+    return true;
+  }
+
+  function syncVideoPlayback(video) {
+    if (canVideoPlay(video)) {
+      if (video.paused) {
+        const p = video.play();
+        if (p !== undefined) p.catch(() => {});
+      }
+    } else if (!video.paused) {
+      video.pause();
+    }
+  }
+
   if (loopVideos.length) {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
     loopVideos.forEach((video) => {
       video.muted = true;
       video.playsInline = true;
       video.setAttribute('muted', '');
       video.setAttribute('playsinline', '');
+      const rect = video.getBoundingClientRect();
+      const visibleNow = rect.bottom > 0 && rect.top < vh && rect.width > 0 && rect.height > 0;
+      videoInView.set(video, visibleNow);
+      if (!visibleNow && !video.paused) {
+        video.pause();
+      }
     });
 
     if ('IntersectionObserver' in window) {
@@ -441,28 +474,32 @@ document.addEventListener('DOMContentLoaded', function () {
         (entries) => {
           entries.forEach((entry) => {
             const video = entry.target;
-            if (entry.isIntersecting) {
-              const p = video.play();
-              if (p !== undefined) {
-                p.catch(() => {});
-              }
-            } else {
-              video.pause();
-            }
+            videoInView.set(video, entry.isIntersecting);
+            syncVideoPlayback(video);
           });
         },
-        { rootMargin: '200px 0px' }
+        { root: null, rootMargin: '0px', threshold: 0.01 }
       );
 
       loopVideos.forEach((video) => videoObserver.observe(video));
     }
+
+    document.addEventListener('visibilitychange', () => {
+      loopVideos.forEach((video) => syncVideoPlayback(video));
+    });
+
+    window.addEventListener('pagehide', () => {
+      loopVideos.forEach((video) => {
+        if (!video.paused) video.pause();
+      });
+    });
   }
 
-  // --- 6. LIVE UNIT COMPARATOR (GSAP SINGLE-CELL TRANSITION & SPEC CYCLE) ---
-  const liveComparator = document.getElementById('liveComparator') || document.querySelector('.live-comparator');
-  const panelsWrap = liveComparator?.querySelector('.comparator-panels');
-  const tabButtons = document.querySelectorAll('.comparator-tab-btn');
-  const panels = document.querySelectorAll('.comparator-panel');
+  // --- 7. MATRIZ DE FRENTES DE OPERAÇÃO (.sector-matrix) ---
+  const liveComparator = document.getElementById('sectorMatrix') || document.querySelector('.sector-matrix');
+  const panelsWrap = liveComparator?.querySelector('.sector-panels');
+  const tabButtons = document.querySelectorAll('.sector-tab-btn');
+  const panels = document.querySelectorAll('.sector-panel');
 
   if (liveComparator && panelsWrap && tabButtons.length && panels.length) {
     const canAnimateSpecs = typeof gsap !== 'undefined' && !prefersReducedMotion;
@@ -513,9 +550,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       specCards.forEach((c, i) => c.classList.toggle('is-focused', i === safeIdx));
 
-      const readoutBox = panel.querySelector('.comparator-readout');
-      const readoutTag = panel.querySelector('.comparator-readout__tag');
-      const detailParagraph = panel.querySelector('.comparator-detail');
+      const readoutBox = panel.querySelector('.sector-readout');
+      const readoutTag = panel.querySelector('.sector-readout__tag');
+      const detailParagraph = panel.querySelector('.sector-detail');
       const rawLabel = targetCard.querySelector('.spec-item__label')?.textContent?.trim() || '';
       const formattedTag = `0${safeIdx + 1} / ${rawLabel}`;
       const newDetail = targetCard.getAttribute('data-detail') || '';
@@ -599,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     }
 
-    // 6.1. Pointer-reactive spotlight coordinates
+    // 7.1. Posição do cursor para destaque (apenas desktop com mouse)
     let comparatorRect = liveComparator.getBoundingClientRect();
 
     if ('ResizeObserver' in window) {
@@ -609,8 +646,9 @@ document.addEventListener('DOMContentLoaded', function () {
       ro.observe(liveComparator);
     }
 
-    liveComparator.addEventListener(
-      'pointermove',
+    if (!isTouchOrCoarse) {
+      liveComparator.addEventListener(
+        'pointermove',
       (e) => {
         if (!comparatorRect.width || !comparatorRect.height) {
           comparatorRect = liveComparator.getBoundingClientRect();
@@ -618,14 +656,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const x = ((e.clientX - comparatorRect.left) / comparatorRect.width) * 100;
         const y = ((e.clientY - comparatorRect.top) / comparatorRect.height) * 100;
         liveComparator.style.setProperty('--mouse-x', `${x.toFixed(2)}%`);
+        if (e.pointerType && e.pointerType !== 'mouse') return;
         liveComparator.style.setProperty('--mouse-y', `${y.toFixed(2)}%`);
       },
       { passive: true }
     );
+    }
 
-    // 6.2. Spec Card manual inspection pauses/resumes the auto-cycle smoothly
+    // 7.2. Inspeção manual dos cards da matriz
     panels.forEach((panel) => {
-      const matrix = panel.querySelector('.comparator-matrix');
+      const matrix = panel.querySelector('.sector-grid');
       const specCards = Array.from(panel.querySelectorAll('.spec-card'));
 
       specCards.forEach((card, cardIdx) => {
@@ -638,13 +678,19 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         };
 
-        card.addEventListener('pointerenter', inspectCard);
+        if (!isTouchOrCoarse) {
+          card.addEventListener('pointerenter', (e) => {
+            if (!e.pointerType || e.pointerType === 'mouse') inspectCard();
+          });
+        }
         card.addEventListener('focus', inspectCard);
         card.addEventListener('click', inspectCard);
       });
 
       if (matrix) {
-        matrix.addEventListener('pointerenter', () => {
+        if (!isTouchOrCoarse) {
+          matrix.addEventListener('pointerenter', (e) => {
+            if (e.pointerType && e.pointerType !== 'mouse') return;
           isUserPaused = true;
           stopSpecCycle();
           const currentIdx = Number.parseInt(panel.dataset.specIndex || '0', 10) || 0;
@@ -652,10 +698,12 @@ document.addEventListener('DOMContentLoaded', function () {
           if (activeLine && typeof gsap !== 'undefined') gsap.set(activeLine, { scaleX: 1 });
         });
 
-        matrix.addEventListener('pointerleave', () => {
+        matrix.addEventListener('pointerleave', (e) => {
+          if (e.pointerType && e.pointerType !== 'mouse') return;
           isUserPaused = false;
           if (panel === getActivePanel()) runSpecCycle(panel);
         });
+        }
 
         matrix.addEventListener('focusin', () => {
           isUserPaused = true;
@@ -699,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // 6.3. Overlap-free GSAP Sector Switcher (single-cell crossfade + smooth height tween)
+    // 7.3. Troca animada entre setores
     function cleanupClosingPanels(exceptPanel) {
       panels.forEach((panel) => {
         if (panel !== exceptPanel && panel.hasAttribute('data-closing')) {
@@ -785,8 +833,8 @@ document.addEventListener('DOMContentLoaded', function () {
         gsap.set(panelsWrap, { clearProps: 'height' });
       }
 
-      const infoTargets = targetPanel.querySelectorAll('.comparator-panel__info > *');
-      const matrixBox = targetPanel.querySelectorAll('.comparator-matrix');
+      const infoTargets = targetPanel.querySelectorAll('.sector-panel__info > *');
+      const matrixBox = targetPanel.querySelectorAll('.sector-grid');
 
       gsap.killTweensOf([...infoTargets, ...matrixBox]);
       gsap.fromTo(
@@ -846,7 +894,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // --- 6.5. LOCATIONS GRID (IPHONE GLASS + LIGHTING BORDER + AUTO LOOP COM RETOMADA DO ÚLTIMO) ---
+  // --- 8. BASES DE OPERAÇÃO (.locations-grid) ---
   const locationsGrid = document.querySelector('.locations-grid');
   const locationCards = locationsGrid ? Array.from(locationsGrid.querySelectorAll('.location-item')) : [];
 
@@ -949,7 +997,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 6.6. DESTINOS RADIAL WHEEL CAROUSEL (#destinos) ---
+  // --- 9. CARROSSEL RADIAL DE DESTINOS (#destinos) ---
   const destinosSection = document.getElementById('destinos');
   if (destinosSection) {
     const wheelSticky = destinosSection.querySelector('.destinos-wheel__sticky');
@@ -1052,7 +1100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const x = Math.sin(rad) * wheelRadius;
         const y = (1 - Math.cos(rad)) * wheelRadius;
 
-        const blur = prefersReducedMotion ? 0 : Math.min(7, (absDelta / 2.6) * 7);
+        const blur = prefersReducedMotion || isTouchOrCoarse || isMobileViewport() ? 0 : Math.min(7, (absDelta / 2.6) * 7);
         const gray = Math.min(1, absDelta * 0.92);
         const opacity = Math.max(0, 1 - absDelta / 4.25);
 
@@ -1343,166 +1391,22 @@ document.addEventListener('DOMContentLoaded', function () {
     updateWheelUI(0, 0);
   }
 
-  // --- 7. ACCORDION TRIGGER (SMOOTH EXPAND/COLLAPSE - ANIMATE-TO-INTRINSIC-SIZES) ---
-  const accordionTriggers = document.querySelectorAll('.accordion-trigger');
-  accordionTriggers.forEach((trigger) => {
-    const parentItem = trigger.closest('.accordion-item');
-    if (parentItem) {
-      trigger.setAttribute('aria-expanded', parentItem.classList.contains('is-open') ? 'true' : 'false');
-    }
-
-    trigger.addEventListener('click', () => {
-      if (!parentItem) return;
-
-      const parentList = parentItem.closest('.accordion-list');
-      const isOpen = parentItem.classList.contains('is-open');
-
-      if (parentList) {
-        parentList.querySelectorAll('.accordion-item.is-open').forEach((openItem) => {
-          if (openItem !== parentItem) {
-            openItem.classList.remove('is-open');
-            const openBtn = openItem.querySelector('.accordion-trigger');
-            if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
-
-      const nextState = !isOpen;
-      parentItem.classList.toggle('is-open', nextState);
-      trigger.setAttribute('aria-expanded', nextState ? 'true' : 'false');
-    });
-  });
-
-  // --- 7.5. INTERACTIVE STICKY STAGE EXPLORER (SUBPAGES SCROLL-SPY & NAV) ---
-  document.querySelectorAll('.stage-explorer').forEach((explorer) => {
-    const navLinks = explorer.querySelectorAll('.stage-nav__link');
-    const stageCards = explorer.querySelectorAll('.stage-card[id]');
-    const liveNote = explorer.querySelector('.stage-explorer__live-note');
-
-    if (!navLinks.length || !stageCards.length) return;
-
-    function activateStage(stageId) {
-      navLinks.forEach((link) => {
-        const isMatch = link.getAttribute('href') === `#${stageId}`;
-        link.classList.toggle('is-active', isMatch);
-        if (isMatch && liveNote) {
-          const noteText = link.getAttribute('data-note');
-          if (noteText) liveNote.textContent = noteText;
-        }
-      });
-
-      stageCards.forEach((card) => {
-        card.classList.toggle('is-active', card.id === stageId);
-      });
-    }
-
-    navLinks.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        const targetId = href.slice(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          e.preventDefault();
-          activateStage(targetId);
-          targetEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    if ('IntersectionObserver' in window) {
-      const stageObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              activateStage(entry.target.id);
-            }
-          });
-        },
-        { rootMargin: '-22% 0px -55% 0px', threshold: 0.05 }
-      );
-
-      stageCards.forEach((card) => stageObserver.observe(card));
-    }
-  });
-
-  // --- 7.6. INTERACTIVE 4-FRAME VISUAL STORYTELLER (NOSSA HISTÓRIA / VISÃO) ---
-  document.querySelectorAll('.story-showcase').forEach((showcase) => {
-    const frames = showcase.querySelectorAll('.story-frame');
-    const detailBox = showcase.querySelector('.story-showcase__detail');
-    const detailTitle = showcase.querySelector('.story-showcase__detail-title');
-    const detailText = showcase.querySelector('.story-showcase__detail-text');
-
-    if (!frames.length) return;
-
-    frames.forEach((frame) => {
-      const selectFrame = () => {
-        frames.forEach((f) => {
-          f.classList.remove('is-active');
-          f.setAttribute('aria-pressed', 'false');
-        });
-        frame.classList.add('is-active');
-        frame.setAttribute('aria-pressed', 'true');
-
-        const newTitle = frame.getAttribute('data-title');
-        const newDetail = frame.getAttribute('data-detail');
-
-        if (detailText && newDetail && detailText.textContent !== newDetail) {
-          if (detailBox) detailBox.classList.add('is-updating');
-          setTimeout(() => {
-            if (detailTitle && newTitle) detailTitle.textContent = newTitle;
-            detailText.textContent = newDetail;
-            if (detailBox) detailBox.classList.remove('is-updating');
-          }, 110);
-        }
-      };
-
-      frame.addEventListener('pointerenter', selectFrame);
-      frame.addEventListener('focus', selectFrame);
-      frame.addEventListener('click', selectFrame);
-    });
-  });
-
-  // --- 7.7. INTERACTIVE ARCHITECTURAL PERSPECTIVES DECK (BORA BEACH) ---
-  document.querySelectorAll('.perspective-deck').forEach((deck) => {
-    const items = deck.querySelectorAll('.perspective-deck__item');
-    items.forEach((item) => {
-      const activateItem = () => {
-        items.forEach((i) => i.classList.remove('is-active'));
-        item.classList.add('is-active');
-      };
-      item.addEventListener('pointerenter', activateItem);
-      item.addEventListener('focus', activateItem);
-      item.addEventListener('click', activateItem);
-    });
-  });
-
-  // --- 8. DYNAMIC SCROLL REVEAL (STAGGERED INTERSECTION OBSERVER) ---
+  // --- 10. REVELAÇÃO DINÂMICA NO SCROLL ---
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const mobileAtLoad = isMobileViewport();
     const revealSelectors = [
       '.section-header',
-      '.flags-bridge__lockup',
+      ...(mobileAtLoad ? [] : ['.flags-bridge__lockup']),
       '.final-cta-box',
-      '.chapter-split',
+      '.feature-split',
       '.manifesto-block',
-      '.overview-split',
-      '.stage-explorer__sidebar',
-      '.stage-card',
-      '.story-showcase',
-      '.perspective-deck',
-      '.live-comparator',
-      '.panorama-showcase',
-      '.cta-box',
+      '.sector-matrix',
       '.contact-form'
     ];
 
     const staggeredGrids = [
-      { parent: '.tri-grid', child: '.tri-card', step: 0.1 },
-      { parent: '.quad-grid', child: '.quad-card', step: 0.09 },
-      { parent: '.perspective-grid', child: '.perspective-card', step: 0.09 },
-      { parent: '.locations-grid', child: '.location-item', step: 0.08 },
-      { parent: '.accordion-list', child: '.accordion-item', step: 0.06 },
-      { parent: '.contact-direct', child: '.contact-card', step: 0.08 }
+      { parent: '.locations-grid', child: '.location-item', step: mobileAtLoad ? 0 : 0.08 },
+      { parent: '.contact-direct', child: '.contact-card', step: mobileAtLoad ? 0 : 0.08 }
     ];
 
     const elementsToObserve = [];
@@ -1537,7 +1441,7 @@ document.addEventListener('DOMContentLoaded', function () {
     elementsToObserve.forEach((el) => revealObserver.observe(el));
   }
 
-  // --- 9. DYNAMIC METRIC COUNTERS (COUNT-UP ANIMATION) ---
+  // --- 11. CONTADORES NUMÉRICOS ---
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const counterElements = document.querySelectorAll('.metric-item__value, .fact-item__num');
 
@@ -1602,12 +1506,12 @@ document.addEventListener('DOMContentLoaded', function () {
     counterElements.forEach((el) => counterObserver.observe(el));
   }
 
-  // --- 10. BLOBS GLOW CANVAS ---
+  // --- 12. FUNDO GRADIENTE ANIMADO (#ambient-canvas) ---
   (function initBlobsGlow() {
-    let canvas = document.getElementById('matrix-canvas');
+    let canvas = document.getElementById('ambient-canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
-      canvas.id = 'matrix-canvas';
+      canvas.id = 'ambient-canvas';
       document.body.prepend(canvas);
     }
     const ctx = canvas.getContext('2d');
@@ -1616,7 +1520,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let width, height;
     let animId = null;
 
-    const isMobileMode = () => window.matchMedia('(max-width: 768px)').matches;
+    const isMobileMode = () => isMobileViewport() || isTouchOrCoarse;
 
     // Configuração dos Blobs com a paleta Blobs Glow (Indigo/Violet)
     const blobs = [
@@ -1732,25 +1636,27 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.globalCompositeOperation = 'source-over';
     }
 
-    window.addEventListener(
-      'mousemove',
-      (e) => {
-        if (isMobileMode()) return;
-        hasMouseInteracted = true;
-        targetMouse.x = e.clientX;
-        targetMouse.y = e.clientY;
-        if (smoothMouse.x < -1000) {
-          smoothMouse.x = e.clientX;
-          smoothMouse.y = e.clientY;
-        }
-      },
-      { passive: true }
-    );
+    if (!isTouchOrCoarse) {
+      window.addEventListener(
+        'mousemove',
+        (e) => {
+          if (isMobileMode()) return;
+          hasMouseInteracted = true;
+          targetMouse.x = e.clientX;
+          targetMouse.y = e.clientY;
+          if (smoothMouse.x < -1000) {
+            smoothMouse.x = e.clientX;
+            smoothMouse.y = e.clientY;
+          }
+        },
+        { passive: true }
+      );
 
-    window.addEventListener('mouseleave', () => {
-      targetMouse.x = -2000;
-      targetMouse.y = -2000;
-    });
+      window.addEventListener('mouseleave', () => {
+        targetMouse.x = -2000;
+        targetMouse.y = -2000;
+      });
+    }
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden && animId) {
@@ -1798,7 +1704,7 @@ document.addEventListener('DOMContentLoaded', function () {
     resize();
   })();
 
-  // --- 10. MENU FIXO DE CONTATO RADIAL (FAB GSAP) ---
+  // --- 13. MENU FLUTUANTE DE CONTATO (FAB) ---
   (function initRadialMenu() {
     const radialWrap = document.querySelector('#radialWrap');
     const fabBtn = document.querySelector('#fabBtn');
@@ -1864,16 +1770,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }, i * 0.055);
       });
 
-      items.forEach((item) => {
-        item.addEventListener('mouseenter', () => {
-          if (!isOpen) return;
-          gsap.to(item, { scale: 1.18, duration: 0.3, ease: 'back.out(2)' });
+      if (!isTouchOrCoarse) {
+        items.forEach((item) => {
+          item.addEventListener('mouseenter', () => {
+            if (!isOpen) return;
+            gsap.to(item, { scale: 1.18, duration: 0.3, ease: 'back.out(2)' });
+          });
+          item.addEventListener('mouseleave', () => {
+            if (!isOpen) return;
+            gsap.to(item, { scale: 1, duration: 0.25, ease: 'power2.out' });
+          });
         });
-        item.addEventListener('mouseleave', () => {
-          if (!isOpen) return;
-          gsap.to(item, { scale: 1, duration: 0.25, ease: 'power2.out' });
-        });
-      });
+      }
     }
 
     function toggleMenu() {
@@ -1931,35 +1839,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // --- 10.4. CLIP-2 & CLIP-3 PARALLAX MEDIA (GSAP SCROLLTRIGGER) ---
-  (function initClipParallax() {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || prefersReducedMotion) return;
+  // --- 14. PARALLAX DAS SEÇÕES DESTAQUE (.feature-split) ---
+  (function initFeatureParallax() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || prefersReducedMotion || isTouchOrCoarse) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll('.clip-section').forEach((section) => {
-      const media = section.querySelector('.clip-grid__parallax-media');
-      const clipBox = section.querySelector('.clip-grid__media-inner');
-      if (!media || !clipBox) return;
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 769px) and (hover: hover)', () => {
+      document.querySelectorAll('.feature-split').forEach((section) => {
+        const media = section.querySelector('.feature-card__parallax-media');
+        const clipBox = section.querySelector('.feature-card__media-inner');
+        if (!media || !clipBox) return;
 
-      gsap.fromTo(
-        media,
-        { yPercent: -10, scale: 1.24 },
-        {
-          yPercent: 10,
-          scale: 1.18,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: clipBox,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
+        gsap.fromTo(
+          media,
+          { yPercent: -10, scale: 1.24 },
+          {
+            yPercent: 10,
+            scale: 1.18,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: clipBox,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
           }
-        }
-      );
+        );
+      });
     });
   })();
 
-  // --- 10.5. ECOSYSTEM PINNED PANELS WITH OVERSCROLL (GSAP SCROLLTRIGGER) ---
+  // --- 15. PAINÉIS DO ECOSSISTEMA (.eco-section) ---
   (function initEcosystemPanels() {
     const panelsContainer = document.getElementById('ecoPanels');
     if (!panelsContainer || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
@@ -2006,7 +1917,11 @@ document.addEventListener('DOMContentLoaded', function () {
               end: nextLand,
               scrub: true,
               invalidateOnRefresh: true,
-              refreshPriority: 19
+              refreshPriority: 19,
+              onUpdate: () => {
+                const panelVideo = card.querySelector('video');
+                if (panelVideo) syncVideoPlayback(panelVideo);
+              }
             }
           });
 
@@ -2052,265 +1967,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // --- 11. GSAP SWIPE SLIDER (COUNTER-SLIDING PANELS + HERO-SECTION-3 CONTENT) ---
-  (function initSwipeSlider() {
-    const section = document.querySelector('.section-swipe-slider');
-    if (!section) return;
-
-    const slides = Array.from(section.querySelectorAll('.swipe-slide'));
-    const outerWrappers = Array.from(section.querySelectorAll('.swipe-slide__outer'));
-    const innerWrappers = Array.from(section.querySelectorAll('.swipe-slide__inner'));
-    const bgs = Array.from(section.querySelectorAll('.swipe-slide__bg'));
-    const cards = Array.from(section.querySelectorAll('.swipe-slide__card'));
-    const dots = Array.from(section.querySelectorAll('.swipe-dot'));
-    const currentCounters = section.querySelectorAll('.swipe-counter__current');
-    const nextBtn = section.querySelector('.swipe-btn--next');
-    const prevBtn = section.querySelector('.swipe-btn--prev');
-    const mainNav = document.getElementById('mainNavbar');
-
-    if (!slides.length || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    let currentActiveIndex = 0;
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-    slides.forEach((slide, i) => {
-      gsap.set(slide, { zIndex: i + 1, autoAlpha: 1 });
-      if (i === 0) {
-        gsap.set(outerWrappers[i], { yPercent: 0 });
-        gsap.set(innerWrappers[i], { yPercent: 0 });
-        gsap.set(bgs[i], { yPercent: 0, scale: 1 });
-        gsap.set(cards[i], { y: 0, opacity: 1 });
-      } else {
-        gsap.set(outerWrappers[i], { yPercent: 100 });
-        gsap.set(innerWrappers[i], { yPercent: -100 });
-        gsap.set(bgs[i], { yPercent: 15, scale: 1.14 });
-        gsap.set(cards[i], { y: 36, opacity: 0 });
-      }
-    });
-
-    const masterTL = gsap.timeline({
-      defaults: { ease: 'none' },
-      paused: isMobile
-    });
-
-    const slideRestTimes = [0];
-    const transMidTimes = [0];
-
-    masterTL.to({}, { duration: 0.3 });
-
-    for (let i = 1; i < slides.length; i++) {
-      const startTime = masterTL.duration();
-      transMidTimes[i] = startTime + 0.5;
-
-      masterTL
-        .fromTo(
-          outerWrappers[i],
-          { yPercent: 100 },
-          { yPercent: 0, duration: 1, ease: 'power2.inOut', immediateRender: false },
-          startTime
-        )
-        .fromTo(
-          innerWrappers[i],
-          { yPercent: -100 },
-          { yPercent: 0, duration: 1, ease: 'power2.inOut', immediateRender: false },
-          startTime
-        )
-        .fromTo(
-          bgs[i],
-          { yPercent: 15, scale: 1.14 },
-          { yPercent: 0, scale: 1, duration: 1, ease: 'power2.out', immediateRender: false },
-          startTime
-        )
-        .fromTo(
-          bgs[i - 1],
-          { yPercent: 0, scale: 1 },
-          { yPercent: -15, scale: 1.06, duration: 1, ease: 'power2.inOut', immediateRender: false },
-          startTime
-        )
-        .fromTo(
-          cards[i - 1],
-          { y: 0, opacity: 1 },
-          { y: -32, opacity: 0, duration: 0.45, ease: 'power2.in', immediateRender: false },
-          startTime
-        )
-        .fromTo(
-          cards[i],
-          { y: 36, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.55, ease: 'power2.out', immediateRender: false },
-          startTime + 0.42
-        );
-
-      const holdDuration = i === slides.length - 1 ? 0.45 : 0.35;
-      masterTL.to({}, { duration: holdDuration }, startTime + 1);
-      slideRestTimes[i] = startTime + 1 + holdDuration * 0.5;
-    }
-
-    function applyActiveFromTime(currentTime) {
-      let activeIdx = 0;
-      for (let i = 1; i < slides.length; i++) {
-        if (currentTime >= transMidTimes[i]) {
-          activeIdx = i;
-        } else {
-          break;
-        }
-      }
-      if (activeIdx !== currentActiveIndex) {
-        currentActiveIndex = activeIdx;
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('is-active', idx === activeIdx);
-        });
-        const formattedCounter = String(activeIdx + 1).padStart(2, '0');
-        currentCounters.forEach((counter) => {
-          counter.textContent = formattedCounter;
-        });
-      }
-    }
-
-    const getTotalScroll = () => (slides.length - 1) * Math.max(600, Math.round(window.innerHeight * 0.72));
-
-    let swipeST = null;
-    if (!isMobile) {
-      swipeST = ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: () => '+=' + getTotalScroll(),
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 0,
-        refreshPriority: 10,
-        animation: masterTL,
-        scrub: 0.65,
-        invalidateOnRefresh: false,
-        onToggle: (self) => {
-          if (mainNav) {
-            mainNav.classList.toggle('is-hidden', self.isActive);
-          }
-        },
-        onUpdate: (self) => {
-          if (mainNav && self.isActive) {
-            mainNav.classList.add('is-hidden');
-          }
-          applyActiveFromTime(self.progress * masterTL.duration());
-        }
-      });
-    }
-
-    let mobileTargetIndex = 0;
-    let mobileNavTween = null;
-    function goToSlideMobile(targetIdx) {
-      targetIdx = Math.max(0, Math.min(slides.length - 1, targetIdx));
-      if (targetIdx === mobileTargetIndex) return;
-      mobileTargetIndex = targetIdx;
-      if (mobileNavTween) mobileNavTween.kill();
-      mobileNavTween = gsap.to(masterTL, {
-        time: slideRestTimes[targetIdx],
-        duration: 0.85,
-        ease: 'power2.inOut',
-        overwrite: true,
-        onUpdate: () => applyActiveFromTime(masterTL.time()),
-        onComplete: () => {
-          applyActiveFromTime(masterTL.time());
-          mobileNavTween = null;
-        }
-      });
-    }
-
-    function scrollToSlide(targetIdx) {
-      if (isMobile) {
-        goToSlideMobile(targetIdx);
-        return;
-      }
-      targetIdx = Math.max(0, Math.min(slides.length - 1, targetIdx));
-      const totalDur = masterTL.duration();
-      const targetProgress = totalDur > 0 ? slideRestTimes[targetIdx] / totalDur : 0;
-      const targetY = swipeST.start + targetProgress * (swipeST.end - swipeST.start);
-
-      if (window.__lenis) {
-        window.__lenis.scrollTo(targetY, {
-          duration: 0.9,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
-      } else {
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-      }
-    }
-
-    const getBaseIndex = () => (isMobile ? mobileTargetIndex : currentActiveIndex);
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollToSlide(getBaseIndex() + 1);
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollToSlide(getBaseIndex() - 1);
-      });
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollToSlide(i);
-      });
-    });
-
-    if (typeof Observer !== 'undefined' || (typeof ScrollTrigger !== 'undefined' && ScrollTrigger.observe)) {
-      const obs = typeof Observer !== 'undefined' ? Observer : ScrollTrigger;
-      let lastSwipeAt = 0;
-      const swipeGuard = (fn) => () => {
-        const now = Date.now();
-        if (now - lastSwipeAt < 450) return;
-        lastSwipeAt = now;
-        fn();
-      };
-      obs.create({
-        target: section,
-        ignore: '.swipe-slider-nav-wrap, .swipe-bottom-controls, .swipe-slide__title-link',
-        type: isMobile ? 'touch,pointer' : 'pointer',
-        tolerance: isMobile ? 40 : 45,
-        preventDefault: false,
-        onLeft: swipeGuard(() => scrollToSlide(getBaseIndex() + 1)),
-        onRight: swipeGuard(() => scrollToSlide(getBaseIndex() - 1))
-      });
-    }
-
-    window.addEventListener('keydown', (e) => {
-      const rect = section.getBoundingClientRect();
-      const isInViewport = rect.top <= 10 && rect.bottom >= window.innerHeight - 10;
-      if (!isInViewport) return;
-
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-        e.preventDefault();
-        scrollToSlide(getBaseIndex() + 1);
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-        e.preventDefault();
-        scrollToSlide(getBaseIndex() - 1);
-      }
-    });
-
-    function refreshSwipeSlider() {
-      if (isMobile) return;
-      ScrollTrigger.sort();
-      ScrollTrigger.refresh();
-    }
-
-    window.addEventListener('load', refreshSwipeSlider);
-    window.addEventListener('resize', refreshSwipeSlider);
-    setTimeout(refreshSwipeSlider, 450);
-  })();
-
   /* ==========================================================================
-     17. BUTTON HOVER RAINDOW (ORANGE SHADES CHAR STAGGER)
+     16. LINKS COM ANIMAÇÃO DE LETRA (.link-rainbow)
      ========================================================================== */
-  document.querySelectorAll('.Button-hover-raindow').forEach(a => {
+  if (!isTouchOrCoarse) {
+    document.querySelectorAll('.link-rainbow').forEach(a => {
     const text = a.textContent.trim();
     if (!text) return;
     a.setAttribute('aria-label', text);
@@ -2324,14 +1985,15 @@ document.addEventListener('DOMContentLoaded', function () {
       span.textContent = ch === ' ' ? '\u00A0' : ch;
       a.appendChild(span);
     });
-  });
+    });
+  }
 
   /* ==========================================================================
-     18. SHOUCASE HOME CURTAIN REVEAL (70d85785-c6e2-55e9-ba7f-315f53775819)
+     17. TRANSIÇÃO DE ABERTURA DA VITRINE DE VÍDEOS (.video-showcase)
      ========================================================================== */
-  const shoucaseHome = document.querySelector('.shoucase-home');
-  if (shoucaseHome && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
-    const sectionCover = shoucaseHome.querySelector('.section-cover');
+  const videoShowcase = document.querySelector('.video-showcase');
+  if (videoShowcase && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
+    const sectionCover = videoShowcase.querySelector('.section-cover');
     if (sectionCover) {
       gsap.set(sectionCover, { display: 'flex', yPercent: 0 });
       gsap.to(sectionCover, {
@@ -2340,7 +2002,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ease: 'quint.inOut',
         onComplete: () => gsap.set(sectionCover, { display: 'none' }),
         scrollTrigger: {
-          trigger: shoucaseHome,
+          trigger: videoShowcase,
           start: 'top 92%',
           once: true
         }
@@ -2349,12 +2011,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ==========================================================================
-     19. SUBPAGES INTERACTIONS (SKILLS ACCORDION, STAGE ANCHORS, COLLECTIONS)
+     18. INTERAÇÕES DAS SUBPÁGINAS (.is-subpage)
      ========================================================================== */
   (function initSubpages() {
     if (!document.body.classList.contains('is-subpage')) return;
 
-    // 19.1. Skills Accordion (.skills-item > .tab-top)
+    // 18.1. Acordeão de diferenciais (.skills-item)
     const skillsItems = Array.from(document.querySelectorAll('.skills-item'));
     skillsItems.forEach((item) => {
       const top = item.querySelector('.tab-top');
@@ -2381,9 +2043,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // 19.2. Smooth Scroll for .circle-link-2 & .anchor-link + Active Stage Spy
+    // 18.2. Scroll suave nos links de âncora das subpáginas
     const anchorLinks = Array.from(document.querySelectorAll('.anchor-link'));
-    const scrollLinks = Array.from(document.querySelectorAll('.circle-link-2, .anchor-link'));
+    const scrollLinks = Array.from(document.querySelectorAll('.hero-scroll-link, .anchor-link'));
 
     scrollLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
@@ -2436,23 +2098,26 @@ document.addEventListener('DOMContentLoaded', function () {
       stageMap.forEach((_, el) => observer.observe(el));
     }
 
-    // 19.3. Bora Beach Collections Sticky Cards Subtle Stack Effect
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
-      const collectionCards = Array.from(document.querySelectorAll('.collection_card'));
-      collectionCards.forEach((card, idx) => {
-        if (idx >= collectionCards.length - 1) return;
-        const nextCard = collectionCards[idx + 1];
-        const rot = idx % 2 === 0 ? 1.5 : -1.5;
-        gsap.to(card, {
-          scale: 0.95,
-          rotation: rot,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: nextCard,
-            start: 'top bottom',
-            end: 'top 15%',
-            scrub: true
-          }
+    // 18.3. Efeito de empilhamento das coleções (Bora Beach — desktop)
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion && !isTouchOrCoarse) {
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 769px) and (hover: hover)', () => {
+        const collectionCards = Array.from(document.querySelectorAll('.collection_card'));
+        collectionCards.forEach((card, idx) => {
+          if (idx >= collectionCards.length - 1) return;
+          const nextCard = collectionCards[idx + 1];
+          const rot = idx % 2 === 0 ? 1.5 : -1.5;
+          gsap.to(card, {
+            scale: 0.95,
+            rotation: rot,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: nextCard,
+              start: 'top bottom',
+              end: 'top 15%',
+              scrub: true
+            }
+          });
         });
       });
     }

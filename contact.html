@@ -23,10 +23,10 @@
     <div class="preloader__bar"></div>
   </div>
 
-  <!-- Dot Matrix Warp Canvas -->
-  <canvas id="matrix-canvas"></canvas>
+  <!-- Fundo gradiente animado -->
+  <canvas id="ambient-canvas"></canvas>
 
-  <!-- Navigation Bar (Expands Fullscreen) -->
+  <!-- Navegação Principal -->
   <header class="navbar" id="mainNavbar">
     <div class="navbar__top">
       <div class="container navbar__wrapper">
@@ -57,7 +57,7 @@
         </ul>
         <div class="navbar__expand-footer">
           <span>Grupo VYVA // Ecossistema Integrado</span>
-          <a href="https://wa.me/5548999999999" target="_blank" rel="noopener noreferrer" class="navbar__expand-wa">WhatsApp ↗</a>
+          <a href="https://api.whatsapp.com/send/?phone=5573998130646&amp;text=Ola%2C+vim+pelo+e+gostaria+de+tirar+algumas+d%C3%BAvidas.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="navbar__expand-wa">WhatsApp ↗</a>
         </div>
       </div>
     </nav>
@@ -65,7 +65,7 @@
 
   <main id="app">
 
-    <!-- Page Hero (Capa acima do canvas pontilhado e abaixo dos textos) -->
+    <!-- Cabeçalho da Página -->
     <section class="page-hero page-hero--compact">
       <div class="page-hero__bg">
         <img src="images/Vyva-Homes-02.avif" alt="Contato VYVA" loading="eager" fetchpriority="high">
@@ -82,24 +82,24 @@
       </div>
     </section>
 
-    <!-- Contact Grid Section -->
+    <!-- Canais de Atendimento e Formulário -->
     <section class="section-view">
       <div class="container">
         <div class="contact-grid">
 
-          <!-- Left Column: Direct Channels -->
+          <!-- Canais Diretos -->
           <div class="contact-direct">
             <div class="contact-card">
               <div class="contact-card__label">E-MAIL COMERCIAL</div>
               <div class="contact-card__val">
-                <a href="mailto:comercial@vyvaoficial.com">comercial@vyvaoficial.com</a>
+                <a href="mailto:Comercial@vyvaoficial.com">Comercial@vyvaoficial.com</a>
               </div>
             </div>
 
             <div class="contact-card">
               <div class="contact-card__label">WHATSAPP &amp; ATENDIMENTO</div>
               <div class="contact-card__val">
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">+55 (11) 99999-9999</a>
+                <a href="https://api.whatsapp.com/send/?phone=5573998130646&amp;text=Ola%2C+vim+pelo+e+gostaria+de+tirar+algumas+d%C3%BAvidas.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">+55 (73) 99813-0646</a>
               </div>
             </div>
 
@@ -118,9 +118,9 @@
             </div>
           </div>
 
-          <!-- Right Column: Interactive Form -->
+          <!-- Formulário de Contato -->
           <div class="contact-form">
-            <form action="mailto:comercial@vyvaoficial.com" method="post" enctype="text/plain">
+            <form action="mailto:Comercial@vyvaoficial.com" method="post" enctype="text/plain">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="contactName">Seu Nome</label>
@@ -135,7 +135,7 @@
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="contactPhone">Telefone / WhatsApp</label>
-                  <input type="tel" id="contactPhone" name="phone" class="form-input" placeholder="+55 (11) 99999-9999">
+                  <input type="tel" id="contactPhone" name="phone" class="form-input" placeholder="+55 (73) 99813-0646">
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="contactUnit">Unidade de Interesse</label>
@@ -169,7 +169,7 @@
 
   </main>
 
-  <!-- Monumental Designed Footer -->
+  <!-- Rodapé -->
   <footer class="footer">
     <div class="container">
       <div class="footer__main">
@@ -223,34 +223,25 @@
   </footer>
 
   <!-- Scripts -->
-  <!-- Botão Fixo de Contato Radial (FAB GSAP) -->
+  <!-- Menu Flutuante de Contato -->
   <div id="radialWrap" class="radial-wrap" aria-label="Menu de Contatos">
     <div id="pulseRing" class="pulse-ring"></div>
 
-    <a href="https://wa.me/557398130646" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--whatsapp" aria-label="Fale pelo WhatsApp">
+    <a href="https://api.whatsapp.com/send/?phone=5573998130646&amp;text=Ola%2C+vim+pelo+e+gostaria+de+tirar+algumas+d%C3%BAvidas.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--whatsapp" aria-label="Fale pelo WhatsApp">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
         <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.04 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15ZM16.56 14.41C16.31 14.29 15.09 13.69 14.86 13.61C14.64 13.52 14.47 13.48 14.31 13.73C14.14 13.97 13.67 14.53 13.52 14.7C13.38 14.86 13.24 14.88 12.99 14.76C12.74 14.64 11.95 14.38 11.01 13.54C10.27 12.89 9.78 12.08 9.63 11.83C9.49 11.59 9.62 11.45 9.74 11.33C9.85 11.22 10 11.05 10.12 10.91C10.24 10.76 10.28 10.66 10.36 10.5C10.45 10.33 10.41 10.19 10.35 10.07C10.28 9.95 9.79 8.74 9.58 8.24C9.38 7.76 9.18 7.82 9.03 7.81C8.89 7.81 8.72 7.81 8.56 7.81C8.39 7.81 8.12 7.87 7.89 8.12C7.66 8.37 7.02 8.97 7.02 10.19C7.02 11.41 7.91 12.59 8.03 12.75C8.16 12.92 9.78 15.42 12.26 16.49C12.85 16.75 13.31 16.9 13.67 17.02C14.26 17.21 14.8 17.18 15.22 17.12C15.7 17.05 16.69 16.52 16.89 15.94C17.1 15.37 17.1 14.88 17.04 14.78C16.97 14.67 16.81 14.54 16.56 14.41Z"/>
       </svg>
       <span class="fab-tooltip">WhatsApp</span>
     </a>
 
-    <a href="https://instagram.com/vyvahomes" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--instagram" aria-label="Siga no Instagram">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-      <span class="fab-tooltip">Instagram</span>
-    </a>
-
-    <a href="tel:+551131352788" class="fab-item fab-item--phone" aria-label="Ligue para nós">
+    <a href="tel:+5573998130646" class="fab-item fab-item--phone" aria-label="Ligue para nós">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
       </svg>
       <span class="fab-tooltip">Telefone</span>
     </a>
 
-    <a href="mailto:contato@vyvahomes.com.br" class="fab-item fab-item--email" aria-label="Envie um E-mail">
+    <a href="mailto:Comercial@vyvaoficial.com" class="fab-item fab-item--email" aria-label="Envie um E-mail">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
         <polyline points="22,6 12,13 2,6"></polyline>
@@ -258,7 +249,7 @@
       <span class="fab-tooltip">E-mail</span>
     </a>
 
-    <!-- Botão Disparador Principal (Tons de Laranja) -->
+    <!-- Botão Principal de Contato -->
     <button id="fabBtn" class="fab-btn" aria-expanded="false" aria-label="Abrir menu de contato" type="button">
       <svg class="fab-icon icon-chat" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>

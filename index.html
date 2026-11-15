@@ -23,10 +23,10 @@
     <div class="preloader__bar"></div>
   </div>
 
-  <!-- Dot Matrix Warp Canvas (Fundo pontilhado interativo atrás de todo o conteúdo) -->
-  <canvas id="matrix-canvas"></canvas>
+  <!-- Fundo gradiente animado -->
+  <canvas id="ambient-canvas"></canvas>
 
-  <!-- Navigation Bar (Expands Fullscreen) -->
+  <!-- Navegação Principal -->
   <header class="navbar" id="mainNavbar">
     <div class="navbar__top">
       <div class="container navbar__wrapper">
@@ -57,7 +57,7 @@
         </ul>
         <div class="navbar__expand-footer">
           <span>Grupo VYVA // Ecossistema Integrado</span>
-          <a href="https://wa.me/5548999999999" target="_blank" rel="noopener noreferrer" class="navbar__expand-wa">WhatsApp ↗</a>
+          <a href="https://api.whatsapp.com/send/?phone=5573998130646&amp;text=Ola%2C+vim+pelo+e+gostaria+de+tirar+algumas+d%C3%BAvidas.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="navbar__expand-wa">WhatsApp ↗</a>
         </div>
       </div>
     </nav>
@@ -65,7 +65,7 @@
 
   <main id="app">
 
-    <!-- Hero Section -->
+    <!-- Hero Principal -->
     <section class="hero" id="hero">
       <div class="hero__video-wrap">
         <video id="heroVideo" class="hero__video" autoplay muted loop playsinline preload="auto" poster="videos/Loop-VYVA-GROUP-1-online-video-cutter.com_poster.0000000.avif">
@@ -81,11 +81,11 @@
       </div>
     </section>
 
-    <!-- Section Logos & Hero Bottom (Site Conteúdo) -->
+    <!-- Faixa de Marcas Parceiras -->
     <div id="skip" class="section-logos">
       <div class="grid-wrapper">
-        <div id="w-node-_75f08d2b-b719-f1bd-fdcd-893de7f2c4aa-e7f2c4a8" class="content-grid">
-          <div id="w-node-_75f08d2b-b719-f1bd-fdcd-893de7f2c4ab-e7f2c4a8" class="logo-side left">
+        <div class="content-grid">
+          <div class="logo-side left">
             <div class="looping-logo-wrapper left">
               <div class="logo-strip-wrapper left">
                 <div class="logo-strip">
@@ -107,10 +107,10 @@
               </div>
             </div>
           </div>
-          <div id="w-node-_98291786-c0bb-cb4f-883e-b6ffb0a99145-e7f2c4a8" class="logo-title">
+          <div class="logo-title">
             <div class="text-block">Marketing, experiências, hospitalidade,<br>short stay e manutenção — EUA × Brasil.</div>
           </div>
-          <div id="w-node-_75f08d2b-b719-f1bd-fdcd-893de7f2c4b3-e7f2c4a8" class="logo-side right">
+          <div class="logo-side right">
             <div class="looping-logo-wrapper right">
               <div class="logo-strip-wrapper right">
                 <div class="logo-strip">
@@ -136,33 +136,33 @@
       </div>
     </div>
     <div class="grid-wrapper hero-bottom-wrapper">
-      <div id="w-node-_5b160af1-19d7-cb21-0a0e-602b6defda2e-5b88e616" class="hero-bottom">
+      <div class="hero-bottom">
         <div class="content-grid">
-          <a href="#ecossistema" id="w-node-bc62f2dc-3510-2df7-d212-3e16d02544a3-5b88e616" class="scroll-link w-inline-block"><img src="images/arrow-down24x242x-2.svg" loading="lazy" alt="" class="scroll-arrow left">
+          <a href="#ecossistema" class="scroll-link w-inline-block"><img src="images/arrow-down24x242x-2.svg" loading="lazy" alt="" class="scroll-arrow left">
             <div>Empresas do grupo</div><img src="images/arrow-down24x242x-2.svg" loading="lazy" alt="" class="scroll-arrow right">
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Seção Conexão EUA x Brasil -->
+    <!-- Conexão EUA × Brasil -->
     <section class="section-view flags-bridge" aria-label="Conexão Estados Unidos e Brasil">
       <div class="container">
         <div class="flags-bridge__lockup">
-          <!-- Bandeira EUA em seta -->
+          <!-- Bandeira EUA -->
           <div class="flags-bridge__flag flags-bridge__flag--usa">
             <img src="images/flag-usa-arrow.avif" alt="Bandeira dos Estados Unidos" width="684" height="309">
           </div>
 
-          <!-- Bandeira Brasil em seta -->
+          <!-- Bandeira Brasil -->
           <div class="flags-bridge__flag flags-bridge__flag--br">
             <img src="images/flag-brazil-arrow.avif" alt="Bandeira do Brasil" width="684" height="309">
           </div>
 
-          <!-- Lines e X Central com efeito Lighting Border contínuo -->
+          <!-- Linhas e Conector Central -->
           <svg class="flags-bridge__svg" viewBox="172 29 680 185" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
-              <!-- Gradiente base do X central (conforme imagem de referência) -->
+              <!-- Gradiente do conector central -->
               <linearGradient id="xFillGrad" x1="468" y1="71" x2="556" y2="172" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#ff7a29" />
                 <stop offset="38%" stop-color="#f27427" />
@@ -171,7 +171,7 @@
                 <stop offset="100%" stop-color="#e8590c" />
               </linearGradient>
 
-              <!-- Gradiente do feixe de luz (Lighting Border) -->
+              <!-- Gradientes dos feixes de luz -->
               <linearGradient id="lightingBeamLeft" x1="276" y1="41" x2="475" y2="202" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#e8590c" stop-opacity="0.25" />
                 <stop offset="45%" stop-color="#ff8c32" stop-opacity="0.95" />
@@ -195,17 +195,17 @@
               </linearGradient>
             </defs>
 
-            <!-- Line Esquerda (Base + Lighting Border) -->
+            <!-- Linha esquerda -->
             <path class="flags-bridge__line-base" d="M 276 41 L 426 41 L 475 121.5 L 426 202 L 276 202" />
             <path class="flags-bridge__line-glow flags-bridge__line-glow--left" d="M 276 41 L 426 41 L 475 121.5 L 426 202 L 276 202" pathLength="100" />
             <path class="flags-bridge__line-apex flags-bridge__line-apex--left" d="M 276 41 L 426 41 L 475 121.5 L 426 202 L 276 202" pathLength="100" />
 
-            <!-- Line Direita (Base + Lighting Border) -->
+            <!-- Linha direita -->
             <path class="flags-bridge__line-base" d="M 748 41 L 598 41 L 549 121.5 L 598 202 L 748 202" />
             <path class="flags-bridge__line-glow flags-bridge__line-glow--right" d="M 748 41 L 598 41 L 549 121.5 L 598 202 L 748 202" pathLength="100" />
             <path class="flags-bridge__line-apex flags-bridge__line-apex--right" d="M 748 41 L 598 41 L 549 121.5 L 598 202 L 748 202" pathLength="100" />
 
-            <!-- X Central (Corpo + Lighting Border sempre ativo) -->
+            <!-- Conector central -->
             <path class="flags-bridge__x-body" d="M 468 71 L 491 71 L 512 106 L 533 71 L 556 71 L 525.5 121.5 L 556 172 L 533 172 L 512 137 L 491 172 L 468 172 L 498.5 121.5 Z" />
             <path class="flags-bridge__x-border-base" d="M 468 71 L 491 71 L 512 106 L 533 71 L 556 71 L 525.5 121.5 L 556 172 L 533 172 L 512 137 L 491 172 L 468 172 L 498.5 121.5 Z" />
             <path class="flags-bridge__x-glow" d="M 468 71 L 491 71 L 512 106 L 533 71 L 556 71 L 525.5 121.5 L 556 172 L 533 172 L 512 137 L 491 172 L 468 172 L 498.5 121.5 Z" pathLength="100" />
@@ -215,13 +215,13 @@
 
         <div class="final-cta-box">
           <span class="section-header__tag">Holding • Brasil &amp; Estados Unidos</span>
-          <h2 class="final-cta-title">Quatro empresas. Cinco frentes de operação.</h2>
+          <h2 class="final-cta-title">Quatro empresas. Seis frentes de operação.</h2>
           <p class="final-cta-desc">Marketing, experiências locais, hospitalidade, short stay, gestão de locação e manutenção predial.</p>
         </div>
       </div>
     </section>
 
-    <!-- Ticker Strip -->
+    <!-- Faixa Contínua de Operações -->
     <section class="ticker-strip" aria-hidden="true">
       <div class="ticker-strip__track">
         <span class="ticker-strip__item">VIP STRATEGY</span>
@@ -251,10 +251,10 @@
       </div>
     </section>
 
-    <!-- Ecosystem Chapters (GSAP Pinned Panels with Overscroll) -->
+    <!-- Ecossistema de Empresas -->
     <section id="ecossistema" class="section-view eco-section">
       <div class="eco-panels" id="ecoPanels">
-        <!-- Chapter 1: VIP Strategy -->
+        <!-- Empresa 1: VIP Strategy -->
         <div class="eco-panel" data-eco-index="0">
           <div class="container">
             <article class="eco-card">
@@ -276,7 +276,7 @@
               <div class="eco-card__body">
                 <div class="eco-card__media-col">
                   <div class="eco-card__media-frame">
-                    <video class="loop-video" autoplay muted loop playsinline preload="metadata" poster="videos/Loop-VIP-STRATEGY_poster.0000000.avif">
+                    <video class="loop-video" data-autoplay="true" muted loop playsinline preload="metadata" poster="videos/Loop-VIP-STRATEGY_poster.0000000.avif">
                       <source src="videos/Loop-VIP-STRATEGY_webm.webm" type="video/webm">
                     </video>
                   </div>
@@ -312,7 +312,7 @@
                   </div>
 
                   <div class="eco-card__footer">
-                    <a href="vipstrategy.html" class="Button-hover-raindow">Conhecer Vip Strategy</a>
+                    <a href="vipstrategy.html" class="link-rainbow">Conhecer Vip Strategy</a>
                   </div>
                 </div>
               </div>
@@ -320,7 +320,7 @@
           </div>
         </div>
 
-        <!-- Chapter 2: Bora Beach -->
+        <!-- Empresa 2: Bora Beach -->
         <div class="eco-panel" data-eco-index="1">
           <div class="container">
             <article class="eco-card eco-card--reverse">
@@ -342,7 +342,7 @@
               <div class="eco-card__body">
                 <div class="eco-card__media-col">
                   <div class="eco-card__media-frame">
-                    <video class="loop-video" autoplay muted loop playsinline preload="metadata" poster="videos/Loop-BORA-BEACH-1_poster.0000000.avif">
+                    <video class="loop-video" data-autoplay="true" muted loop playsinline preload="metadata" poster="videos/Loop-BORA-BEACH-1_poster.0000000.avif">
                       <source src="videos/Loop-BORA-BEACH-1_webm.webm" type="video/webm">
                     </video>
                   </div>
@@ -378,7 +378,7 @@
                   </div>
 
                   <div class="eco-card__footer">
-                    <a href="bora-beach.html" class="Button-hover-raindow">Ver Detalhes do Bora Beach</a>
+                    <a href="bora-beach.html" class="link-rainbow">Ver Detalhes do Bora Beach</a>
                   </div>
                 </div>
               </div>
@@ -386,7 +386,7 @@
           </div>
         </div>
 
-        <!-- Chapter 3: Vyva Homes -->
+        <!-- Empresa 3: Vyva Homes -->
         <div class="eco-panel" data-eco-index="2">
           <div class="container">
             <article class="eco-card">
@@ -408,7 +408,7 @@
               <div class="eco-card__body">
                 <div class="eco-card__media-col">
                   <div class="eco-card__media-frame">
-                    <video class="loop-video" autoplay muted loop playsinline preload="metadata" poster="videos/Loop-VYVA-HOMES_poster.0000000.avif">
+                    <video class="loop-video" data-autoplay="true" muted loop playsinline preload="metadata" poster="videos/Loop-VYVA-HOMES_poster.0000000.avif">
                       <source src="videos/Loop-VYVA-HOMES_webm.webm" type="video/webm">
                     </video>
                   </div>
@@ -444,7 +444,7 @@
                   </div>
 
                   <div class="eco-card__footer">
-                    <a href="vyva-homes.html" class="Button-hover-raindow">Conhecer Vyva Homes</a>
+                    <a href="vyva-homes.html" class="link-rainbow">Conhecer Vyva Homes</a>
                   </div>
                 </div>
               </div>
@@ -452,7 +452,7 @@
           </div>
         </div>
 
-        <!-- Chapter 4: PHP General Services -->
+        <!-- Empresa 4: PHP General Services -->
         <div class="eco-panel" data-eco-index="3">
           <div class="container">
             <article class="eco-card eco-card--reverse">
@@ -474,7 +474,7 @@
               <div class="eco-card__body">
                 <div class="eco-card__media-col">
                   <div class="eco-card__media-frame">
-                    <video class="loop-video" autoplay muted loop playsinline preload="metadata" poster="videos/Loop-PHP_poster.0000000.avif">
+                    <video class="loop-video" data-autoplay="true" muted loop playsinline preload="metadata" poster="videos/Loop-PHP_poster.0000000.avif">
                       <source src="videos/Loop-PHP_webm.webm" type="video/webm">
                     </video>
                   </div>
@@ -510,7 +510,7 @@
                   </div>
 
                   <div class="eco-card__footer">
-                    <a href="php-general-services.html" class="Button-hover-raindow">Conhecer PHP General</a>
+                    <a href="php-general-services.html" class="link-rainbow">Conhecer PHP General</a>
                   </div>
                 </div>
               </div>
@@ -520,10 +520,10 @@
       </div>
     </section>
 
-    <!-- Shoucase Home (Seção 70d85785-c6e2-55e9-ba7f-315f53775819 do Site Conteúdo) -->
-    <section id="shoucase-home" data-w-id="70d85785-c6e2-55e9-ba7f-315f53775819" class="shoucase-home section-5 no-padding clip">
-      <div class="grid-wrapper-2">
-        <div id="w-node-_70d85785-c6e2-55e9-ba7f-315f5377581b-5b88e616" class="video-box">
+    <!-- Vitrine em Vídeo: Bora Beach -->
+    <section id="vitrine-videos" class="video-showcase">
+      <div class="video-showcase__grid">
+        <div class="video-box">
           <div class="left-corner">
             <div class="corner-fill"></div>
             <div class="corner-fill horizontal"></div>
@@ -540,59 +540,59 @@
             <div class="corner-fill right"></div>
             <div class="corner-fill horizontal right"></div>
           </div>
-          <div class="hero-intro-2 small">
-            <div class="stacked-intro-2">
+          <div class="showcase-intro showcase-intro--compact">
+            <div class="showcase-intro__inner">
               <div class="stacked-heading centered">
                 <div class="subtitle-intro">
-                  <div id="w-node-_70d85785-c6e2-55e9-ba7f-315f5377582c-5b88e616" class="subtitle-line left">
+                  <div class="subtitle-line left">
                     <div class="solid-subtitle-line"></div>
                   </div>
-                  <div class="subtitle-3 light">EST 2026 • ILHÉUS, BAHIA</div>
-                  <div id="w-node-_70d85785-c6e2-55e9-ba7f-315f53775830-5b88e616" class="subtitle-line">
+                  <div class="showcase-subtitle">EST 2026 • ILHÉUS, BAHIA</div>
+                  <div class="subtitle-line">
                     <div class="solid-subtitle-line"></div>
                   </div>
                 </div>
-                <h1 class="xxl-heading-2">Bora Beach</h1>
+                <h1 class="showcase-intro__title">Bora Beach</h1>
               </div>
-              <div id="w-node-_70d85785-c6e2-55e9-ba7f-315f53775834-5b88e616" class="medium-width-2">
-                <div class="body-display-2 light">Short stay, beach club e gastronomia frente ao mar.</div>
+              <div class="showcase-intro__desc-wrap">
+                <div class="showcase-intro__desc">Short stay, beach club e gastronomia frente ao mar.</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div data-poster-url="videos/background-bora-beach_poster.0000000.avif" data-video-urls="videos/background-bora-beach_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="background-video-2 w-background-video w-background-video-atom">
-        <video id="70d85785-c6e2-55e9-ba7f-315f53775841-video" class="loop-video" autoplay loop muted playsinline preload="metadata" poster="videos/background-bora-beach_poster.0000000.avif" style="background-image:url('videos/background-bora-beach_poster.0000000.avif')" data-wf-ignore="true" data-object-fit="cover">
+      <div data-poster-url="videos/background-bora-beach_poster.0000000.avif" data-video-urls="videos/background-bora-beach_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="showcase-video-bg">
+        <video id="boraBeachShowcaseVideo" class="loop-video" data-autoplay="true" loop muted playsinline preload="metadata" poster="videos/background-bora-beach_poster.0000000.avif" style="background-image:url('videos/background-bora-beach_poster.0000000.avif')" data-wf-ignore="true" data-object-fit="cover">
           <source src="videos/background-bora-beach_webm.webm" type="video/webm" data-wf-ignore="true">
         </video>
-        <div class="overlay-3 gradient"></div>
+        <div class="showcase-overlay showcase-overlay--gradient"></div>
       </div>
       <div class="video-bottom">
         <div class="video-meta">
-          <div id="w-node-_70d85785-c6e2-55e9-ba7f-315f53775845-5b88e616" class="video-plus">
+          <div class="video-plus">
             <div class="plus-line"></div>
-            <div class="plus-line verticle"></div>
+            <div class="plus-line plus-line--vertical"></div>
           </div>
-          <a href="bora-beach.html" id="w-node-_70d85785-c6e2-55e9-ba7f-315f53775848-5b88e616" class="underline-hover-link w-inline-block">
-            <div class="subtitle-3 light">conheça o projeto</div>
+          <a href="bora-beach.html" class="underline-hover-link showcase-link--project w-inline-block">
+            <div class="showcase-subtitle">conheça o projeto</div>
             <div class="hover-line light">
               <div class="hover-line-fill light"></div>
             </div>
           </a>
-          <a href="contact.html" id="w-node-_70d85785-c6e2-55e9-ba7f-315f5377584d-5b88e616" class="underline-hover-link w-inline-block">
-            <div class="subtitle-3 light">contato</div>
+          <a href="contact.html" class="underline-hover-link showcase-link--contact w-inline-block">
+            <div class="showcase-subtitle">contato</div>
             <div class="hover-line">
               <div class="hover-line-fill light"></div>
             </div>
           </a>
         </div>
-        <div class="verticle-line-2"></div>
+        <div class="vertical-line--offset"></div>
       </div>
       <div class="section-cover"></div>
     </section>
 
-    <!-- Live Thing: Interactive Sector Matrix -->
-    <section class="section-view" id="comparador-ecossistema">
+    <!-- Matriz de Frentes de Operação -->
+    <section class="section-view" id="setores-atendidos">
       <div class="container">
         <header class="section-header">
           <h2 class="section-title">Setores e áreas atendidas.</h2>
@@ -601,47 +601,47 @@
           </p>
         </header>
 
-        <div class="live-comparator lighting-border" id="liveComparator">
-          <div class="comparator-spotlight" aria-hidden="true"></div>
+        <div class="sector-matrix lighting-border" id="sectorMatrix">
+          <div class="sector-spotlight" aria-hidden="true"></div>
 
-          <div class="comparator-tabs" role="tablist" aria-label="Setores e áreas atendidas pela VYVA">
-            <button type="button" class="comparator-tab-btn" id="tab-marketing" data-unit="marketing" role="tab" aria-selected="true" tabindex="0">
-              <span class="comparator-tab-btn__num">01</span>
+          <div class="sector-tabs" role="tablist" aria-label="Setores e áreas atendidas pela VYVA">
+            <button type="button" class="sector-tab-btn" id="tab-marketing" data-unit="marketing" role="tab" aria-selected="true" tabindex="0">
+              <span class="sector-tab-btn__num">01</span>
               <span>Marketing</span>
             </button>
-            <button type="button" class="comparator-tab-btn" id="tab-experiencias" data-unit="experiencias" role="tab" aria-selected="false" tabindex="-1">
-              <span class="comparator-tab-btn__num">02</span>
+            <button type="button" class="sector-tab-btn" id="tab-experiencias" data-unit="experiencias" role="tab" aria-selected="false" tabindex="-1">
+              <span class="sector-tab-btn__num">02</span>
               <span>Experiências</span>
             </button>
-            <button type="button" class="comparator-tab-btn" id="tab-hospitalidade" data-unit="hospitalidade" role="tab" aria-selected="false" tabindex="-1">
-              <span class="comparator-tab-btn__num">03</span>
+            <button type="button" class="sector-tab-btn" id="tab-hospitalidade" data-unit="hospitalidade" role="tab" aria-selected="false" tabindex="-1">
+              <span class="sector-tab-btn__num">03</span>
               <span>Hospitalidade</span>
             </button>
-            <button type="button" class="comparator-tab-btn" id="tab-locacao" data-unit="locacao" role="tab" aria-selected="false" tabindex="-1">
-              <span class="comparator-tab-btn__num">04</span>
+            <button type="button" class="sector-tab-btn" id="tab-locacao" data-unit="locacao" role="tab" aria-selected="false" tabindex="-1">
+              <span class="sector-tab-btn__num">04</span>
               <span>Locação</span>
             </button>
-            <button type="button" class="comparator-tab-btn" id="tab-manutencao" data-unit="manutencao" role="tab" aria-selected="false" tabindex="-1">
-              <span class="comparator-tab-btn__num">05</span>
+            <button type="button" class="sector-tab-btn" id="tab-manutencao" data-unit="manutencao" role="tab" aria-selected="false" tabindex="-1">
+              <span class="sector-tab-btn__num">05</span>
               <span>Manutenção</span>
             </button>
           </div>
 
-          <div class="comparator-panels">
+          <div class="sector-panels">
             <!-- Panel 1: Marketing & Marca -->
-            <div class="comparator-panel" id="panel-marketing" data-unit="marketing" role="tabpanel" aria-labelledby="tab-marketing">
-              <div class="comparator-panel__info" data-index="01">
-                <div class="comparator-panel__meta">
-                  <span class="comparator-panel__code">01 · VIP STRATEGY</span>
+            <div class="sector-panel" id="panel-marketing" data-unit="marketing" role="tabpanel" aria-labelledby="tab-marketing">
+              <div class="sector-panel__info" data-index="01">
+                <div class="sector-panel__meta">
+                  <span class="sector-panel__code">01 · VIP STRATEGY</span>
                 </div>
-                <h3 class="comparator-panel__title">Marcas, tráfego &amp; mídia</h3>
-                <p class="comparator-panel__text">
+                <h3 class="sector-panel__title">Marcas, tráfego &amp; mídia</h3>
+                <p class="sector-panel__text">
                   Posicionamento, tráfego pago e mídia para negócios físicos nos EUA e Brasil.
                 </p>
               </div>
-              <div class="comparator-panel__divider" aria-hidden="true"></div>
-              <div class="comparator-matrix">
-                <div class="comparator-specs" role="group" aria-label="Áreas atendidas em Marketing">
+              <div class="sector-panel__divider" aria-hidden="true"></div>
+              <div class="sector-grid">
+                <div class="sector-specs" role="group" aria-label="Áreas atendidas em Marketing">
                   <button type="button" class="spec-card is-focused" data-detail="Restaurantes, bares, casas de entretenimento e marcas locais.">
                     <span class="spec-item__label">Segmentos</span>
                     <span class="spec-item__val">Gastronomia &amp; Venues</span>
@@ -663,9 +663,9 @@
                     <span class="spec-card__line" aria-hidden="true"></span>
                   </button>
                 </div>
-                <div class="comparator-readout">
-                  <span class="comparator-readout__tag" aria-hidden="true">01 / Segmentos</span>
-                  <p class="comparator-detail" aria-live="polite">
+                <div class="sector-readout">
+                  <span class="sector-readout__tag" aria-hidden="true">01 / Segmentos</span>
+                  <p class="sector-detail" aria-live="polite">
                     Restaurantes, bares, casas de entretenimento e marcas locais.
                   </p>
                 </div>
@@ -673,19 +673,19 @@
             </div>
 
             <!-- Panel 2: Experiências Locais -->
-            <div class="comparator-panel" id="panel-experiencias" data-unit="experiencias" role="tabpanel" aria-labelledby="tab-experiencias" hidden>
-              <div class="comparator-panel__info" data-index="02">
-                <div class="comparator-panel__meta">
-                  <span class="comparator-panel__code">02 · VIP STRATEGY</span>
+            <div class="sector-panel" id="panel-experiencias" data-unit="experiencias" role="tabpanel" aria-labelledby="tab-experiencias" hidden>
+              <div class="sector-panel__info" data-index="02">
+                <div class="sector-panel__meta">
+                  <span class="sector-panel__code">02 · VIP STRATEGY</span>
                 </div>
-                <h3 class="comparator-panel__title">Eventos, noites &amp; venues</h3>
-                <p class="comparator-panel__text">
+                <h3 class="sector-panel__title">Eventos, noites &amp; venues</h3>
+                <p class="sector-panel__text">
                   Produção de eventos, programação cultural e ativação de público presencial.
                 </p>
               </div>
-              <div class="comparator-panel__divider" aria-hidden="true"></div>
-              <div class="comparator-matrix">
-                <div class="comparator-specs" role="group" aria-label="Áreas atendidas em Experiências Locais">
+              <div class="sector-panel__divider" aria-hidden="true"></div>
+              <div class="sector-grid">
+                <div class="sector-specs" role="group" aria-label="Áreas atendidas em Experiências Locais">
                   <button type="button" class="spec-card is-focused" data-detail="150+ eventos produzidos e 70.000+ pessoas entre Texas e Brasil.">
                     <span class="spec-item__label">Escala</span>
                     <span class="spec-item__val">150+ Eventos · 70 mil+</span>
@@ -707,9 +707,9 @@
                     <span class="spec-card__line" aria-hidden="true"></span>
                   </button>
                 </div>
-                <div class="comparator-readout">
-                  <span class="comparator-readout__tag" aria-hidden="true">01 / Escala</span>
-                  <p class="comparator-detail" aria-live="polite">
+                <div class="sector-readout">
+                  <span class="sector-readout__tag" aria-hidden="true">01 / Escala</span>
+                  <p class="sector-detail" aria-live="polite">
                     150+ eventos produzidos e 70.000+ pessoas entre Texas e Brasil.
                   </p>
                 </div>
@@ -717,19 +717,19 @@
             </div>
 
             <!-- Panel 3: Hospitalidade & Resort -->
-            <div class="comparator-panel" id="panel-hospitalidade" data-unit="hospitalidade" role="tabpanel" aria-labelledby="tab-hospitalidade" hidden>
-              <div class="comparator-panel__info" data-index="03">
-                <div class="comparator-panel__meta">
-                  <span class="comparator-panel__code">03 · BORA BEACH</span>
+            <div class="sector-panel" id="panel-hospitalidade" data-unit="hospitalidade" role="tabpanel" aria-labelledby="tab-hospitalidade" hidden>
+              <div class="sector-panel__info" data-index="03">
+                <div class="sector-panel__meta">
+                  <span class="sector-panel__code">03 · BORA BEACH</span>
                 </div>
-                <h3 class="comparator-panel__title">Resort &amp; lazer frente ao mar</h3>
-                <p class="comparator-panel__text">
+                <h3 class="sector-panel__title">Resort &amp; lazer frente ao mar</h3>
+                <p class="sector-panel__text">
                   Complexo à beira-mar com hospedagem, beach club, gastronomia e varejo.
                 </p>
               </div>
-              <div class="comparator-panel__divider" aria-hidden="true"></div>
-              <div class="comparator-matrix">
-                <div class="comparator-specs" role="group" aria-label="Áreas atendidas em Hospitalidade">
+              <div class="sector-panel__divider" aria-hidden="true"></div>
+              <div class="sector-grid">
+                <div class="sector-specs" role="group" aria-label="Áreas atendidas em Hospitalidade">
                   <button type="button" class="spec-card is-focused" data-detail="Terreno de ~5.000 m² em Ilhéus com início operacional em 2026.">
                     <span class="spec-item__label">Hospedagem</span>
                     <span class="spec-item__val">50+ Suítes · ~5.000 m²</span>
@@ -751,9 +751,9 @@
                     <span class="spec-card__line" aria-hidden="true"></span>
                   </button>
                 </div>
-                <div class="comparator-readout">
-                  <span class="comparator-readout__tag" aria-hidden="true">01 / Hospedagem</span>
-                  <p class="comparator-detail" aria-live="polite">
+                <div class="sector-readout">
+                  <span class="sector-readout__tag" aria-hidden="true">01 / Hospedagem</span>
+                  <p class="sector-detail" aria-live="polite">
                     Terreno de ~5.000 m² em Ilhéus com início operacional em 2026.
                   </p>
                 </div>
@@ -761,19 +761,19 @@
             </div>
 
             <!-- Panel 4: Locação & Short Stay -->
-            <div class="comparator-panel" id="panel-locacao" data-unit="locacao" role="tabpanel" aria-labelledby="tab-locacao" hidden>
-              <div class="comparator-panel__info" data-index="04">
-                <div class="comparator-panel__meta">
-                  <span class="comparator-panel__code">04 · VYVA HOMES</span>
+            <div class="sector-panel" id="panel-locacao" data-unit="locacao" role="tabpanel" aria-labelledby="tab-locacao" hidden>
+              <div class="sector-panel__info" data-index="04">
+                <div class="sector-panel__meta">
+                  <span class="sector-panel__code">04 · VYVA HOMES</span>
                 </div>
-                <h3 class="comparator-panel__title">Gestão de short &amp; mid-stay</h3>
-                <p class="comparator-panel__text">
+                <h3 class="sector-panel__title">Gestão de short &amp; mid-stay</h3>
+                <p class="sector-panel__text">
                   Operação completa de imóveis residenciais para curta e média temporada.
                 </p>
               </div>
-              <div class="comparator-panel__divider" aria-hidden="true"></div>
-              <div class="comparator-matrix">
-                <div class="comparator-specs" role="group" aria-label="Áreas atendidas em Locação e Short Stay">
+              <div class="sector-panel__divider" aria-hidden="true"></div>
+              <div class="sector-grid">
+                <div class="sector-specs" role="group" aria-label="Áreas atendidas em Locação e Short Stay">
                   <button type="button" class="spec-card is-focused" data-detail="Do setup e precificação à limpeza, enxoval e repasse ao proprietário.">
                     <span class="spec-item__label">Público</span>
                     <span class="spec-item__val">Proprietários &amp; Investidores</span>
@@ -795,9 +795,9 @@
                     <span class="spec-card__line" aria-hidden="true"></span>
                   </button>
                 </div>
-                <div class="comparator-readout">
-                  <span class="comparator-readout__tag" aria-hidden="true">01 / Público</span>
-                  <p class="comparator-detail" aria-live="polite">
+                <div class="sector-readout">
+                  <span class="sector-readout__tag" aria-hidden="true">01 / Público</span>
+                  <p class="sector-detail" aria-live="polite">
                     Do setup e precificação à limpeza, enxoval e repasse ao proprietário.
                   </p>
                 </div>
@@ -805,19 +805,19 @@
             </div>
 
             <!-- Panel 5: Manutenção & Facilities -->
-            <div class="comparator-panel" id="panel-manutencao" data-unit="manutencao" role="tabpanel" aria-labelledby="tab-manutencao" hidden>
-              <div class="comparator-panel__info" data-index="05">
-                <div class="comparator-panel__meta">
-                  <span class="comparator-panel__code">05 · PHP GENERAL SERVICES</span>
+            <div class="sector-panel" id="panel-manutencao" data-unit="manutencao" role="tabpanel" aria-labelledby="tab-manutencao" hidden>
+              <div class="sector-panel__info" data-index="05">
+                <div class="sector-panel__meta">
+                  <span class="sector-panel__code">05 · PHP GENERAL SERVICES</span>
                 </div>
-                <h3 class="comparator-panel__title">Reparos, turnover &amp; logística</h3>
-                <p class="comparator-panel__text">
+                <h3 class="sector-panel__title">Reparos, turnover &amp; logística</h3>
+                <p class="sector-panel__text">
                   Manutenção predial, preparação entre locações e entregas técnicas nos EUA.
                 </p>
               </div>
-              <div class="comparator-panel__divider" aria-hidden="true"></div>
-              <div class="comparator-matrix">
-                <div class="comparator-specs" role="group" aria-label="Áreas atendidas em Manutenção e Facilities">
+              <div class="sector-panel__divider" aria-hidden="true"></div>
+              <div class="sector-grid">
+                <div class="sector-specs" role="group" aria-label="Áreas atendidas em Manutenção e Facilities">
                   <button type="button" class="spec-card is-focused" data-detail="+21.217 ordens de serviço em 1.000+ imóveis e 256+ clientes ativos.">
                     <span class="spec-item__label">Volume</span>
                     <span class="spec-item__val">+21.217 OS · 1.000+ Imóveis</span>
@@ -839,9 +839,9 @@
                     <span class="spec-card__line" aria-hidden="true"></span>
                   </button>
                 </div>
-                <div class="comparator-readout">
-                  <span class="comparator-readout__tag" aria-hidden="true">01 / Volume</span>
-                  <p class="comparator-detail" aria-live="polite">
+                <div class="sector-readout">
+                  <span class="sector-readout__tag" aria-hidden="true">01 / Volume</span>
+                  <p class="sector-detail" aria-live="polite">
                     +21.217 ordens de serviço em 1.000+ imóveis e 256+ clientes ativos.
                   </p>
                 </div>
@@ -853,93 +853,93 @@
       </div>
     </section>
 
-    <!-- Section Clip 2: Escopo da Holding -->
-    <section class="section-view clip-section clip-2" id="nosso-proposito">
+    <!-- Destaque: Escopo da Holding -->
+    <section class="section-view feature-split" id="nosso-proposito">
       <div class="container">
-        <div class="clip-grid">
-          <span class="clip-grid__corner clip-grid__corner--tl" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--tr" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--bl" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--br" aria-hidden="true"></span>
+        <div class="feature-card">
+          <span class="feature-card__corner feature-card__corner--tl" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--tr" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--bl" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--br" aria-hidden="true"></span>
 
-          <div class="clip-grid__media">
-            <div class="clip-grid__media-inner">
+          <div class="feature-card__media">
+            <div class="feature-card__media-inner">
               <img
                 src="images/Frame-1.avif"
                 alt="Escopo de Atuação — Grupo VYVA"
-                class="clip-grid__parallax-media"
+                class="feature-card__parallax-media"
                 loading="lazy"
               >
             </div>
           </div>
 
-          <div class="clip-grid__divider" aria-hidden="true">
-            <span class="clip-grid__divider-node"></span>
+          <div class="feature-card__divider" aria-hidden="true">
+            <span class="feature-card__divider-node"></span>
           </div>
 
-          <div class="clip-grid__content">
-            <div class="clip-grid__body">
-              <div class="clip-grid__eyebrow">
-                <span class="clip-grid__index">01</span>
-                <span class="clip-grid__subtitle">ESCOPO DA HOLDING</span>
+          <div class="feature-card__content">
+            <div class="feature-card__body">
+              <div class="feature-card__eyebrow">
+                <span class="feature-card__index">01</span>
+                <span class="feature-card__subtitle">ESCOPO DA HOLDING</span>
               </div>
-              <h2 class="clip-grid__title">
-                Cinco verticais. <span class="clip-grid__accent">Um grupo</span>.
+              <h2 class="feature-card__title">
+                Cinco verticais. <span class="feature-card__accent">Um grupo</span>.
               </h2>
-              <p class="clip-grid__text">
+              <p class="feature-card__text">
                 Cada empresa opera em uma etapa complementar entre atração de público, hospedagem e conservação física dos espaços.
               </p>
-              <p class="clip-grid__pillars">
+              <p class="feature-card__pillars">
                 Marketing e estratégia de marca.<br>
                 Experiências locais e entretenimento.<br>
                 Hospitalidade, short stay e locação.<br>
                 Manutenção, facilities e turnover.
               </p>
             </div>
-            <div class="clip-grid__footer">
-              <a href="contact.html" class="Button-hover-raindow">Falar com o grupo</a>
+            <div class="feature-card__footer">
+              <a href="contact.html" class="link-rainbow">Falar com o grupo</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section Clip 3: Entretenimento & Venues (Texas) -->
-    <section class="section-view clip-section clip-3" id="vip-strategy-intro">
+    <!-- Destaque: Entretenimento & Venues (Texas) -->
+    <section class="section-view feature-split feature-split--reverse" id="vip-strategy-intro">
       <div class="container">
-        <div class="clip-grid">
-          <span class="clip-grid__corner clip-grid__corner--tl" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--tr" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--bl" aria-hidden="true"></span>
-          <span class="clip-grid__corner clip-grid__corner--br" aria-hidden="true"></span>
+        <div class="feature-card">
+          <span class="feature-card__corner feature-card__corner--tl" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--tr" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--bl" aria-hidden="true"></span>
+          <span class="feature-card__corner feature-card__corner--br" aria-hidden="true"></span>
 
-          <div class="clip-grid__content">
-            <div class="clip-grid__body">
-              <div class="clip-grid__eyebrow">
-                <span class="clip-grid__index">02</span>
-                <span class="clip-grid__subtitle">TEXAS • ENTRETENIMENTO &amp; VENUES</span>
+          <div class="feature-card__content">
+            <div class="feature-card__body">
+              <div class="feature-card__eyebrow">
+                <span class="feature-card__index">02</span>
+                <span class="feature-card__subtitle">TEXAS • ENTRETENIMENTO &amp; VENUES</span>
               </div>
-              <h2 class="clip-grid__title">
-                Público ativo em <span class="clip-grid__accent">casas e marcas</span> no Texas
+              <h2 class="feature-card__title">
+                Público ativo em <span class="feature-card__accent">casas e marcas</span> no Texas
               </h2>
-              <p class="clip-grid__text">
+              <p class="feature-card__text">
                 A frente americana de experiências conecta restaurantes, live music venues, sports bars e nightclubs ao público latino e brasileiro em Dallas, Austin, Houston e San Antonio.
               </p>
             </div>
-            <div class="clip-grid__footer">
-              <a href="vipstrategy.html" class="Button-hover-raindow">Ver projetos no Texas</a>
+            <div class="feature-card__footer">
+              <a href="vipstrategy.html" class="link-rainbow">Ver projetos no Texas</a>
             </div>
           </div>
 
-          <div class="clip-grid__divider" aria-hidden="true">
-            <span class="clip-grid__divider-node"></span>
+          <div class="feature-card__divider" aria-hidden="true">
+            <span class="feature-card__divider-node"></span>
           </div>
 
-          <div class="clip-grid__media">
-            <div class="clip-grid__media-inner">
+          <div class="feature-card__media">
+            <div class="feature-card__media-inner">
               <video
-                class="clip-grid__parallax-media"
-                autoplay
+                class="feature-card__parallax-media"
+                data-autoplay="true"
                 muted
                 loop
                 playsinline
@@ -954,7 +954,7 @@
       </div>
     </section>
 
-    <!-- 3D Carousel Gallery -->
+    <!-- Galeria 3D -->
     <section class="section-view carousel-3d-section" id="galeria-3d" aria-roledescription="carousel" aria-label="Galeria em 3D Vyva">
       <div class="container">
         <header class="section-header carousel-3d__header">
@@ -996,7 +996,7 @@
       </div>
     </section>
 
-    <!-- Manifesto Section (Síntese Direta) -->
+    <!-- Manifesto -->
     <section class="section-view">
       <div class="container">
         <div class="manifesto-block">
@@ -1007,8 +1007,8 @@
       </div>
     </section>
 
-    <!-- Destinos Radial Wheel Carousel -->
-    <section class="section-view section-footprint section-destinos-slider section-reels-slider destinos-wheel" id="destinos" aria-roledescription="carousel" aria-label="Destinos VYVA">
+    <!-- Carrossel de Destinos -->
+    <section class="section-view destinos-wheel" id="destinos" aria-roledescription="carousel" aria-label="Destinos VYVA">
       <div class="destinos-wheel__sticky">
         <div class="container destinos-wheel__header-wrap">
           <header class="section-header destinos-wheel__header">
@@ -1017,10 +1017,10 @@
 
           <div class="destinos-wheel__regions" role="group" aria-label="Filtrar por país">
             <button type="button" class="destinos-wheel__region-btn is-active" data-jump-index="0" data-country-group="EUA">
-              <span class="Button-hover-raindow">Estados Unidos</span> <span class="destinos-wheel__region-count">23</span>
+              <span class="link-rainbow">Estados Unidos</span> <span class="destinos-wheel__region-count">23</span>
             </button>
             <button type="button" class="destinos-wheel__region-btn" data-jump-index="23" data-country-group="Brasil">
-              <span class="Button-hover-raindow">Brasil</span> <span class="destinos-wheel__region-count">06</span>
+              <span class="link-rainbow">Brasil</span> <span class="destinos-wheel__region-count">06</span>
             </button>
           </div>
         </div>
@@ -1266,7 +1266,7 @@
           <div class="destinos-wheel__controls">
             <button type="button" class="destinos-wheel__nav-btn" data-wheel-dir="prev" aria-label="Destino anterior">
               <span aria-hidden="true">&#8592;</span>
-              <span class="Button-hover-raindow">Anterior</span>
+              <span class="link-rainbow">Anterior</span>
             </button>
 
             <div class="destinos-wheel__progress-wrap" aria-hidden="true">
@@ -1277,7 +1277,7 @@
             </div>
 
             <button type="button" class="destinos-wheel__nav-btn" data-wheel-dir="next" aria-label="Próximo destino">
-              <span class="Button-hover-raindow">Próximo</span>
+              <span class="link-rainbow">Próximo</span>
               <span aria-hidden="true">&#8594;</span>
             </button>
           </div>
@@ -1298,7 +1298,7 @@
       </div>
     </section>
 
-    <!-- International Presence -->
+    <!-- Bases de Operação -->
     <section class="section-view">
       <div class="container">
         <header class="section-header">
@@ -1335,7 +1335,7 @@
 
   </main>
 
-  <!-- Monumental Designed Footer (SKILL.md) -->
+  <!-- Rodapé -->
   <footer class="footer">
     <div class="container">
       <div class="footer__main">
@@ -1388,34 +1388,25 @@
     </div>
   </footer>
 
-  <!-- Botão Fixo de Contato Radial (FAB GSAP) -->
+  <!-- Menu Flutuante de Contato -->
   <div id="radialWrap" class="radial-wrap" aria-label="Menu de Contatos">
     <div id="pulseRing" class="pulse-ring"></div>
 
-    <a href="https://wa.me/557398130646" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--whatsapp" aria-label="Fale pelo WhatsApp">
+    <a href="https://api.whatsapp.com/send/?phone=5573998130646&amp;text=Ola%2C+vim+pelo+e+gostaria+de+tirar+algumas+d%C3%BAvidas.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--whatsapp" aria-label="Fale pelo WhatsApp">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
         <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.04 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15ZM16.56 14.41C16.31 14.29 15.09 13.69 14.86 13.61C14.64 13.52 14.47 13.48 14.31 13.73C14.14 13.97 13.67 14.53 13.52 14.7C13.38 14.86 13.24 14.88 12.99 14.76C12.74 14.64 11.95 14.38 11.01 13.54C10.27 12.89 9.78 12.08 9.63 11.83C9.49 11.59 9.62 11.45 9.74 11.33C9.85 11.22 10 11.05 10.12 10.91C10.24 10.76 10.28 10.66 10.36 10.5C10.45 10.33 10.41 10.19 10.35 10.07C10.28 9.95 9.79 8.74 9.58 8.24C9.38 7.76 9.18 7.82 9.03 7.81C8.89 7.81 8.72 7.81 8.56 7.81C8.39 7.81 8.12 7.87 7.89 8.12C7.66 8.37 7.02 8.97 7.02 10.19C7.02 11.41 7.91 12.59 8.03 12.75C8.16 12.92 9.78 15.42 12.26 16.49C12.85 16.75 13.31 16.9 13.67 17.02C14.26 17.21 14.8 17.18 15.22 17.12C15.7 17.05 16.69 16.52 16.89 15.94C17.1 15.37 17.1 14.88 17.04 14.78C16.97 14.67 16.81 14.54 16.56 14.41Z"/>
       </svg>
       <span class="fab-tooltip">WhatsApp</span>
     </a>
 
-    <a href="https://instagram.com/vyvahomes" target="_blank" rel="noopener noreferrer" class="fab-item fab-item--instagram" aria-label="Siga no Instagram">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-      <span class="fab-tooltip">Instagram</span>
-    </a>
-
-    <a href="tel:+551131352788" class="fab-item fab-item--phone" aria-label="Ligue para nós">
+    <a href="tel:+5573998130646" class="fab-item fab-item--phone" aria-label="Ligue para nós">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
       </svg>
       <span class="fab-tooltip">Telefone</span>
     </a>
 
-    <a href="mailto:contato@vyvahomes.com.br" class="fab-item fab-item--email" aria-label="Envie um E-mail">
+    <a href="mailto:Comercial@vyvaoficial.com" class="fab-item fab-item--email" aria-label="Envie um E-mail">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
         <polyline points="22,6 12,13 2,6"></polyline>
@@ -1423,7 +1414,7 @@
       <span class="fab-tooltip">E-mail</span>
     </a>
 
-    <!-- Botão Disparador Principal (Tons de Laranja) -->
+    <!-- Botão Principal de Contato -->
     <button id="fabBtn" class="fab-btn" aria-expanded="false" aria-label="Abrir menu de contato" type="button">
       <svg class="fab-icon icon-chat" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
