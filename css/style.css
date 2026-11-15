@@ -5718,7 +5718,7 @@ textarea.form-input {
 }
 
 .is-subpage .background-image.vyva-homes-capa {
-  background-image: linear-gradient(transparent 36%, #000), url('../images/Vya-homes-01.png');
+  background-image: linear-gradient(transparent 36%, #000), url('../images/Vya-homes-01.avif');
 }
 
 .is-subpage .background-image.phpgeneral {
@@ -5750,11 +5750,11 @@ textarea.form-input {
 }
 
 .is-subpage .background-image.about-vyva-homes-2 {
-  background-image: linear-gradient(transparent 41%, #000), url('../images/Vyva-Homes-03.png');
+  background-image: linear-gradient(transparent 41%, #000), url('../images/Vyva-Homes-03.avif');
 }
 
 .is-subpage .background-image.about-vyva-homes-3 {
-  background-image: linear-gradient(transparent 41%, #000), url('../images/Vyva-Homes-04.png');
+  background-image: linear-gradient(transparent 41%, #000), url('../images/Vyva-Homes-04.avif');
 }
 
 .is-subpage .background-image.about-p1 {
@@ -6200,13 +6200,13 @@ textarea.form-input {
 }
 
 .is-subpage .rotating-background.image-five.image-vyva-homes-1 {
-  background-image: url('../images/Rectangle-28.png');
+  background-image: url('../images/Rectangle-28.avif');
 }
 .is-subpage .rotating-background.image-six.image-vyva-homes-2 {
   background-image: url('../images/Vyva-Homes-01.avif');
 }
 .is-subpage .rotating-background.image-seven.image-vyva-homes-3 {
-  background-image: url('../images/Rectangle-26.png');
+  background-image: url('../images/Rectangle-26.avif');
 }
 .is-subpage .rotating-background.image-eight.image-vyva-homes-4 {
   background-image: url('../images/Rectangle-27.avif');
@@ -6600,7 +6600,7 @@ textarea.form-input {
 }
 
 .is-subpage .background-2 {
-  background-image: url('../images/Hotel-Fazenda.png');
+  background-image: url('../images/Hotel-Fazenda.avif');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -6609,7 +6609,7 @@ textarea.form-input {
 }
 
 .is-subpage .background-2.action-background {
-  background-image: url('../images/036.jpeg');
+  background-image: url('../images/036.avif');
 }
 
 .is-subpage .overlay-5 {
