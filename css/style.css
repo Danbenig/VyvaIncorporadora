@@ -2515,16 +2515,12 @@ body.is-loaded .page-hero__content > div {
 .video-showcase {
   z-index: 20;
   justify-content: center;
-  padding-top: 140px;
-  padding-bottom: 140px;
-  display: flex;
-  position: relative;
-}
-
-.video-showcase {
   padding-top: 0;
   padding-bottom: 0;
+  display: flex;
+  position: relative;
   overflow: hidden;
+  color: #fff;
 }
 
 .video-showcase .video-showcase__grid {
@@ -2641,6 +2637,7 @@ body.is-loaded .page-hero__content > div {
   display: grid;
 }
 
+.video-showcase .showcase-intro--compact,
 .video-showcase .showcase-intro.small {
   grid-row-gap: 36px;
   max-width: 700px;
@@ -2704,17 +2701,14 @@ body.is-loaded .page-hero__content > div {
   height: 100%;
 }
 
-.video-showcase .showcase-subtitle {
-  color: #666883;
+.video-showcase .showcase-subtitle,
+.video-showcase .showcase-subtitle.light {
+  color: #fff;
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-right: 0;
   font-size: 10px;
   line-height: 1.3em;
-}
-
-.video-showcase .showcase-subtitle.light {
-  color: #fff;
 }
 
 .video-showcase .showcase-intro__title {
@@ -2730,14 +2724,11 @@ body.is-loaded .page-hero__content > div {
   max-width: 575px;
 }
 
-.video-showcase .showcase-intro__desc {
-  color: #707788;
-  font-size: 18px;
-  line-height: 1.65em;
-}
-
+.video-showcase .showcase-intro__desc,
 .video-showcase .showcase-intro__desc.light {
   color: #fff;
+  font-size: 18px;
+  line-height: 1.65em;
 }
 
 .video-showcase .showcase-video-bg {
@@ -2767,6 +2758,7 @@ body.is-loaded .page-hero__content > div {
   inset: 0%;
 }
 
+.video-showcase .showcase-overlay--gradient,
 .video-showcase .showcase-overlay.gradient {
   background-color: rgba(9, 15, 22, 0.2);
   background-image: linear-gradient(rgba(9, 15, 22, 0.5), rgba(9, 15, 22, 0.6));
@@ -2927,10 +2919,12 @@ body.is-loaded .page-hero__content > div {
     padding: 48px 28px;
   }
   .video-showcase .showcase-intro,
+  .video-showcase .showcase-intro--compact,
   .video-showcase .showcase-intro.small {
     grid-row-gap: 24px;
     padding-bottom: 0;
     width: 100%;
+    color: #fff;
   }
   .video-showcase .stacked-heading {
     grid-row-gap: 20px;
@@ -2997,9 +2991,11 @@ body.is-loaded .page-hero__content > div {
   .video-showcase .subtitle-line {
     width: 100%;
   }
+  .video-showcase .showcase-subtitle,
   .video-showcase .showcase-subtitle.light {
     text-align: center;
     letter-spacing: 2.5px;
+    color: #fff;
   }
   .video-showcase .showcase-intro__title {
     font-size: 32px;
